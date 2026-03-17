@@ -23,7 +23,6 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
     body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; width: 100%; }
     
-    /* Fundo com efeito mais forte */
     #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 50%, #111 0%, #000 100%); }
 
     /* --- HEADER --- */
@@ -35,28 +34,29 @@
     .nav-socials a:hover { color: var(--primary); border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
 
     /* --- HERO --- */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 140px 20px 60px; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 140px 20px 40px; }
     
-    /* Slider no Topo do Hero */
-    .hero-tech-slider { width: 100%; overflow: hidden; margin-bottom: 40px; padding: 10px 0; opacity: 0.8; }
+    .hero-tech-slider { width: 100%; overflow: hidden; margin-bottom: 30px; padding: 10px 0; opacity: 0.8; }
     .slide-track { display: flex; width: calc(180px * 12); animation: scroll 20s linear infinite; gap: 30px; }
     @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-180px * 6)); } }
     .slide { width: 150px; display: flex; align-items: center; gap: 10px; color: var(--primary); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
 
-    .status-tag { background: rgba(57, 255, 20, 0.05); border: 1px solid var(--primary); padding: 8px 18px; border-radius: 5px; color: var(--primary); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; display: flex; align-items: center; gap: 8px; box-shadow: 0 0 15px rgba(57, 255, 20, 0.1); }
-    .status-tag .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; box-shadow: 0 0 8px var(--primary); }
-    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+    .status-tag { background: rgba(57, 255, 20, 0.05); border: 1px solid var(--primary); padding: 8px 18px; border-radius: 5px; color: var(--primary); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; display: flex; align-items: center; gap: 8px; }
+    .status-tag .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
     
-    .hero h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 25px; }
-    .hero h1 span { color: var(--primary); }
-    .hero p { color: var(--text-muted); max-width: 600px; font-size: 1rem; line-height: 1.6; margin-bottom: 40px; }
+    /* Título Ajustado */
+    .hero h1 { font-size: clamp(2.2rem, 9vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 25px; }
+    .hero h1 span { color: var(--primary); display: block; } /* Faz o Full-Stack descer */
 
-    .hero-btns { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px; }
+    .hero p { color: var(--text-muted); max-width: 600px; font-size: 1rem; line-height: 1.6; margin-bottom: 35px; }
+
+    .hero-btns { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
     .btn { padding: 18px 30px; border-radius: 6px; font-weight: 700; text-decoration: none; transition: 0.4s; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; cursor: pointer; text-align: center; }
     .btn-primary { background: var(--primary); color: #000; border: none; }
     .btn-secondary { border: 1px solid var(--glass-border); color: #fff; background: rgba(255,255,255,0.02); }
 
-    .stats { display: flex; gap: 30px; margin-top: 60px; }
+    /* Stats mais próximos dos botões */
+    .stats { display: flex; gap: 30px; margin-top: 35px; } 
     .stat-item h2 { font-size: 2.2rem; color: var(--primary); }
     .stat-item p { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
@@ -102,6 +102,7 @@
       .hero-btns { flex-direction: row; max-width: none; justify-content: center; }
       .projects-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-grid { grid-template-columns: 1fr 1.5fr; }
+      .hero h1 span { display: inline; } /* Volta ao normal no PC */
     }
     @media (min-width: 992px) {
       .projects-grid { grid-template-columns: repeat(3, 1fr); }
@@ -126,7 +127,6 @@
   </nav>
 
   <section class="hero">
-    
     <div class="hero-tech-slider" data-aos="fade-down">
       <div class="slide-track">
         <div class="slide"><i class="fab fa-html5"></i> HTML5</div>
@@ -243,14 +243,11 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
-
     function enviarEmail() {
       const nome = document.getElementById('nome').value;
       const mensagem = document.getElementById('mensagem').value;
       window.location.href = `mailto:Luancfelix30@gmail.com?subject=Contato Portfólio&body=Nome: ${nome}%0A%0AMensagem: ${mensagem}`;
     }
-
-    /* Efeito de partículas mais forte */
     particlesJS("particles-js", {
       "particles": {
         "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
