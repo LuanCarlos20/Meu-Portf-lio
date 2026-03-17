@@ -24,88 +24,90 @@
     body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; width: 100%; }
     #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
 
-    /* --- HEADER RESPONSIVO --- */
-    nav { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); }
-    .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: -1px; }
+    /* --- HEADER --- */
+    nav { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; backdrop-filter: blur(10px); border-bottom: 1px solid var(--glass-border); }
+    .logo { font-size: 1.3rem; font-weight: 800; letter-spacing: -1px; }
     .logo span { color: var(--primary); }
     .nav-socials { display: flex; gap: 10px; }
-    .nav-socials a { color: var(--text-main); font-size: 1rem; width: 35px; height: 35px; border: 1px solid var(--glass-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .nav-socials a { color: var(--text-main); font-size: 1.1rem; transition: 0.3s; width: 38px; height: 38px; border: 1px solid var(--glass-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .nav-socials a:hover { color: var(--primary); border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
 
-    /* --- HERO MOBILE --- */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 100px 20px 60px; }
-    .status-tag { background: rgba(57, 255, 20, 0.05); border: 1px solid var(--primary); padding: 6px 15px; border-radius: 5px; color: var(--primary); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; display: flex; align-items: center; gap: 8px; }
-    .status-tag .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; box-shadow: 0 0 8px var(--primary); }
+    /* --- HERO --- */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 60px; }
+    .status-tag { background: rgba(57, 255, 20, 0.05); border: 1px solid var(--primary); padding: 8px 18px; border-radius: 5px; color: var(--primary); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; display: flex; align-items: center; gap: 8px; }
+    .status-tag .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     
-    .hero h1 { font-size: clamp(2.2rem, 10vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 25px; }
     .hero h1 span { color: var(--primary); }
-    .hero p { color: var(--text-muted); max-width: 500px; font-size: 1rem; line-height: 1.6; margin-bottom: 35px; padding: 0 10px; }
+    .hero p { color: var(--text-muted); max-width: 600px; font-size: 1rem; line-height: 1.6; margin-bottom: 40px; padding: 0 10px; }
 
-    .hero-btns { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
-    .btn { padding: 16px 25px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: 0.4s; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; text-align: center; }
+    .hero-btns { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px; }
+    .btn { padding: 18px 30px; border-radius: 6px; font-weight: 700; text-decoration: none; transition: 0.4s; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; cursor: pointer; text-align: center; }
     .btn-primary { background: var(--primary); color: #000; border: none; }
-    .btn-secondary { border: 1px solid var(--glass-border); color: #fff; background: rgba(255,255,255,0.03); }
+    .btn-secondary { border: 1px solid var(--glass-border); color: #fff; background: rgba(255,255,255,0.02); }
 
-    .stats { display: flex; gap: 30px; margin-top: 60px; justify-content: center; width: 100%; }
-    .stat-item h2 { font-size: 2rem; color: var(--primary); margin-bottom: 2px; }
+    .stats { display: flex; gap: 30px; margin-top: 60px; }
+    .stat-item h2 { font-size: 2.2rem; color: var(--primary); }
     .stat-item p { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
     /* --- TECH SLIDER --- */
-    .tech-slider { border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 20px 0; overflow: hidden; background: rgba(57, 255, 20, 0.01); }
-    .slide-track { display: flex; width: calc(200px * 12); animation: scroll 20s linear infinite; gap: 30px; }
+    .tech-slider { border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 25px 0; overflow: hidden; background: rgba(255,255,255,0.01); }
+    .slide-track { display: flex; width: calc(200px * 12); animation: scroll 20s linear infinite; gap: 40px; }
     @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-200px * 6)); } }
-    .slide { width: 150px; display: flex; align-items: center; gap: 10px; color: var(--text-muted); font-weight: 700; font-size: 0.8rem; }
-    .slide i { color: var(--primary); font-size: 1.2rem; }
+    .slide { width: 160px; display: flex; align-items: center; gap: 12px; color: var(--text-muted); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
+    .slide i { color: var(--primary); font-size: 1.3rem; }
 
-    /* --- SEÇÕES PADRÃO --- */
-    .section-container { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-    .section-label { color: var(--primary); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-    .section-label::before { content: ""; width: 30px; height: 1px; background: var(--primary); display: inline-block; }
-    h2.section-title { font-size: 2.5rem; margin-bottom: 30px; letter-spacing: -1px; line-height: 1; }
-
-    /* --- PROJETOS MOBILE --- */
-    .projects-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-    .project-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; }
-    .card-img { width: 100%; height: 180px; object-fit: cover; }
-    .card-content { padding: 20px; }
-    .card-content h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--primary); }
-    .card-content p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px; }
-    .project-link { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; display: flex; align-items: center; gap: 5px; }
+    /* --- SECTIONS COMUM --- */
+    .section-label { color: var(--primary); font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; }
+    .section-label::before { content: ""; width: 35px; height: 1px; background: var(--primary); display: inline-block; }
+    
+    /* --- PROJETOS --- */
+    .projects-section { padding: 80px 7%; }
+    .projects-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 40px; }
+    .project-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; transition: 0.4s; }
+    .card-img { width: 100%; height: 200px; object-fit: cover; }
+    .card-content { padding: 22px; }
+    .card-content h3 { font-size: 1.15rem; margin-bottom: 10px; color: var(--primary); }
+    .card-content p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 18px; line-height: 1.5; }
+    .project-link { color: #fff; text-decoration: none; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; border-bottom: 1px solid var(--primary); padding-bottom: 2px; }
 
     /* --- SOBRE MIM --- */
-    .about-content { display: flex; flex-direction: column; gap: 30px; }
+    .about-section { padding: 80px 7%; display: flex; flex-direction: column; gap: 40px; }
+    .about-text h2 { font-size: 2.8rem; margin-bottom: 25px; letter-spacing: -1px; line-height: 1; }
     .about-text p { color: var(--text-muted); line-height: 1.7; font-size: 1rem; }
     .about-text b { color: #fff; }
 
-    /* --- CONTATO MOBILE --- */
-    .contact-content { display: flex; flex-direction: column; gap: 40px; }
-    .info-card { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border); }
-    .info-icon { width: 45px; height: 45px; background: rgba(57, 255, 20, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1rem; }
-    .info-detail h4 { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; }
-    .info-detail p { font-size: 0.9rem; font-weight: 600; }
+    /* --- CONTATO --- */
+    #contato { padding: 80px 7%; }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    .info-card { display: flex; align-items: center; gap: 18px; margin-bottom: 25px; }
+    .info-icon { width: 50px; height: 50px; background: rgba(57, 255, 20, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+    .info-detail h4 { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3px; }
+    .info-detail p { font-size: 0.9rem; }
 
-    .contact-form { background: var(--card-bg); padding: 25px; border-radius: 15px; border: 1px solid var(--glass-border); }
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; font-size: 0.65rem; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; }
-    input, textarea { width: 100%; background: #000; border: 1px solid var(--glass-border); padding: 14px; color: #fff; border-radius: 8px; outline: none; font-size: 0.9rem; }
+    .contact-form { background: var(--card-bg); padding: 30px 20px; border-radius: 15px; border: 1px solid var(--glass-border); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; }
+    input, textarea { width: 100%; background: #000; border: 1px solid var(--glass-border); padding: 15px; color: #fff; border-radius: 8px; outline: none; font-size: 0.9rem; }
     input:focus { border-color: var(--primary); }
 
-    footer { border-top: 1px solid var(--glass-border); padding: 40px 20px; text-align: center; background: #070707; }
-    footer p { font-size: 0.8rem; color: var(--text-muted); }
+    footer { border-top: 1px solid var(--glass-border); padding: 40px 7%; text-align: center; }
+    footer p { font-size: 0.8rem; }
     footer span { color: var(--primary); font-weight: 700; }
 
-    /* Ajustes para telas maiores (Desktop) */
+    /* --- RESPONSIVIDADE DESKTOP (PC) --- */
     @media (min-width: 768px) {
       .hero-btns { flex-direction: row; max-width: none; justify-content: center; }
       .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-content { flex-direction: row; align-items: center; }
-      .about-text { flex: 1; }
-      .contact-content { flex-direction: row; }
-      .contact-info { flex: 1; }
-      .contact-form { flex: 1.5; }
+      .contact-grid { grid-template-columns: 1fr 1.5fr; }
     }
-    @media (min-width: 1024px) {
+    @media (min-width: 992px) {
       .projects-grid { grid-template-columns: repeat(3, 1fr); }
+      .about-section { flex-direction: row; align-items: center; padding: 100px 10%; }
+      .about-text { flex: 1; }
+      .about-text h2 { font-size: 3.5rem; }
+      .about-visual { flex: 1; }
     }
   </style>
 </head>
@@ -116,8 +118,9 @@
   <nav>
     <div class="logo">Luan Carlos<span>.</span></div>
     <div class="nav-socials">
-      <a href="https://wa.me/5588992791644"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://github.com/LuanCarlos20"><i class="fab fa-github"></i></a>
+      <a href="https://wa.me/5588992791644" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://github.com/LuanCarlos20" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank"><i class="fab fa-linkedin-in"></i></a>
     </div>
   </nav>
 
@@ -126,10 +129,10 @@
       <div class="dot"></div> Disponível para Contato
     </div>
     <h1 data-aos="fade-up">Desenvolvimento <span>Full-Stack</span></h1>
-    <p data-aos="fade-up" data-aos-delay="100">Soluções robustas e design de alto impacto para sua empresa.</p>
+    <p data-aos="fade-up" data-aos-delay="100">Transformo ideias em produtos digitais de alto impacto, unindo design moderno e performance técnica.</p>
     
     <div class="hero-btns" data-aos="fade-up" data-aos-delay="200">
-      <a href="#contato" class="btn btn-primary">Iniciar Projeto</a>
+      <a href="#contato" class="btn btn-primary">Iniciar Projeto →</a>
       <a href="#trabalhos" class="btn btn-secondary">Ver Portfólio</a>
     </div>
 
@@ -146,95 +149,114 @@
       <div class="slide"><i class="fab fa-js"></i> JavaScript</div>
       <div class="slide"><i class="fab fa-python"></i> Python</div>
       <div class="slide"><i class="fab fa-php"></i> PHP</div>
-      <div class="slide"><i class="fab fa-react"></i> React</div>
+      <div class="slide"><i class="fab fa-react"></i> React.js</div>
       <div class="slide"><i class="fab fa-html5"></i> HTML5</div>
       <div class="slide"><i class="fab fa-css3-alt"></i> CSS3</div>
       <div class="slide"><i class="fab fa-js"></i> JavaScript</div>
       <div class="slide"><i class="fab fa-python"></i> Python</div>
       <div class="slide"><i class="fab fa-php"></i> PHP</div>
-      <div class="slide"><i class="fab fa-react"></i> React</div>
+      <div class="slide"><i class="fab fa-react"></i> React.js</div>
     </div>
   </div>
 
-  <section id="trabalhos" class="section-container">
-    <div class="section-label">Trabalhos</div>
-    <h2 class="section-title">Portfólio</h2>
+  <section id="trabalhos" class="projects-section">
+    <div class="section-label">Portfólio</div>
+    <h2 style="font-size: 2.8rem; margin-bottom: 20px; letter-spacing: -1px;">Meus Projetos</h2>
     <div class="projects-grid">
+      
       <div class="project-card" data-aos="fade-up">
         <img src="https://i.postimg.cc/mD7XvX4Y/image.jpg" class="card-img">
         <div class="card-content">
           <h3>Terra Forte Locações</h3>
-          <p>Locação de máquinas pesadas com foco em UX.</p>
-          <a href="https://terrafortes.netlify.app/" target="_blank" class="project-link">Acessar Projeto →</a>
+          <p>Plataforma completa para locação de máquinas pesadas.</p>
+          <a href="https://terrafortes.netlify.app/" target="_blank" class="project-link">Visitar Site →</a>
         </div>
       </div>
+
       <div class="project-card" data-aos="fade-up" data-aos-delay="100">
         <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600" class="card-img">
         <div class="card-content">
           <h3>Pizzaria Cariri</h3>
-          <p>Cardápio digital com integração de pedidos.</p>
-          <a href="https://pizzariacariri.netlify.app/" target="_blank" class="project-link">Acessar Projeto →</a>
+          <p>Cardápio digital interativo para pedidos em tempo real.</p>
+          <a href="https://pizzariacariri.netlify.app/" target="_blank" class="project-link">Visitar Site →</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section id="sobre" class="section-container" style="background: rgba(255,255,255,0.01);">
-    <div class="about-content">
-      <div class="about-text" data-aos="fade-up">
-        <div class="section-label">Sobre</div>
-        <h2 class="section-title">Quem sou eu</h2>
-        <p>
-          Sou <b>Luan Carlos</b>, desenvolvedor full-stack apaixonado por criar soluções escaláveis. 
-          Atualmente graduando em <b>Análise e Desenvolvimento de Sistemas</b> pela <b>Uniasselvi</b>.
-        </p>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://i.postimg.cc/0jXyvN3S/dra-celine-capa.jpg" class="card-img">
+        <div class="card-content">
+          <h3>Dra. Celine Conceito</h3>
+          <p>E-commerce premium focado em moda médica de luxo.</p>
+          <a href="https://draceline.com.br/" target="_blank" class="project-link">Visitar Site →</a>
+        </div>
       </div>
+
     </div>
   </section>
 
-  <section id="contato" class="section-container">
+  <section class="about-section" id="sobre">
+    <div class="about-text" data-aos="fade-up">
+      <div class="section-label">Sobre mim</div>
+      <h2>Quem sou eu</h2>
+      <p>
+        Sou <b>Luan Carlos</b>, desenvolvedor full-stack em formação e apaixonado por criar soluções web robustas e escaláveis. <br><br>
+        Atualmente curso <b>Análise e Desenvolvimento de Sistemas</b> na <b>Uniasselvi</b>, onde construo a base técnica para entregar software que gera valor real ao negócio.
+      </p>
+    </div>
+    <div class="about-visual" data-aos="fade-up">
+        <div style="width: 100%; height: 250px; border: 1px solid var(--primary); border-radius: 20px; background: rgba(57, 255, 20, 0.02); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 4rem;">
+            <i class="fas fa-terminal"></i>
+        </div>
+    </div>
+  </section>
+
+  <section id="contato">
     <div class="section-label">Contato</div>
-    <h2 class="section-title">Vamos conversar</h2>
-    <div class="contact-content">
+    <h2 style="font-size: 2.8rem; margin-bottom: 40px; letter-spacing: -1px;">Vamos conversar</h2>
+    
+    <div class="contact-grid">
       <div class="contact-info" data-aos="fade-up">
         <div class="info-card">
           <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-          <div class="info-detail"><h4>Whatsapp</h4><p>+55 88 99279-1644</p></div>
+          <div class="info-detail"><h4>Telefone / Whatsapp</h4><p>+55 88 99279-1644</p></div>
         </div>
         <div class="info-card">
           <div class="info-icon"><i class="fas fa-envelope"></i></div>
           <div class="info-detail"><h4>E-mail</h4><p>Luancfelix30@gmail.com</p></div>
         </div>
       </div>
+
       <div class="contact-form" data-aos="fade-up">
         <form onsubmit="enviarEmail(); return false;">
-          <div class="form-group"><label>Nome</label><input type="text" id="nome" placeholder="Seu nome" required></div>
-          <div class="form-group"><label>Mensagem</label><textarea id="mensagem" rows="3" placeholder="Sua ideia..." required></textarea></div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar</button>
+          <div class="form-group"><label>Seu Nome</label><input type="text" id="nome" placeholder="João Silva" required></div>
+          <div class="form-group"><label>Mensagem</label><textarea id="mensagem" rows="4" placeholder="Descreva seu projeto..." required></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem →</button>
         </form>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2026 <span>Luan Carlos</span></p>
-    <p style="font-size: 0.6rem; margin-top: 10px; opacity: 0.5;">BARBALHA - CEARÁ</p>
+    <p>© 2026 <span>Luan Carlos</span> — Todos os direitos reservados</p>
+    <div style="margin-top: 10px; font-size: 0.6rem; color: #555; text-transform: uppercase; letter-spacing: 1px;">Barbalha-CE</div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 800, once: true });
+    AOS.init({ duration: 1000, once: true });
+
     function enviarEmail() {
       const nome = document.getElementById('nome').value;
-      const msg = document.getElementById('mensagem').value;
-      window.location.href = `mailto:Luancfelix30@gmail.com?subject=Contato&body=Nome: ${nome}%0A${msg}`;
+      const mensagem = document.getElementById('mensagem').value;
+      window.location.href = `mailto:Luancfelix30@gmail.com?subject=Contato Portfólio&body=Nome: ${nome}%0A%0AMensagem: ${mensagem}`;
     }
+
     particlesJS("particles-js", {
       "particles": {
         "number": { "value": 30 },
         "color": { "value": "#39FF14" },
-        "opacity": { "value": 0.1 },
+        "opacity": { "value": 0.2 },
         "size": { "value": 2 },
         "line_linked": { "enable": true, "distance": 120, "color": "#39FF14", "opacity": 0.1 },
         "move": { "enable": true, "speed": 1 }
