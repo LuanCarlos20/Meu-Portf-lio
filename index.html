@@ -13,7 +13,7 @@
       --primary: #00ff88; 
       --secondary: #064e3b; 
       --bg: #020617; 
-      --card-bg: #0f172a;
+      --card-bg: rgba(15, 23, 42, 0.8);
       --text-gray: #94a3b8;
     }
 
@@ -24,6 +24,24 @@
       color: #fff;
       line-height: 1.6;
       overflow-x: hidden;
+      /* Efeito de grade sutil no fundo */
+      background-image: 
+        linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    /* Efeito de luz difusa atrás dos projetos */
+    .bg-glow {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 255, 136, 0.07), transparent 70%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: -1;
     }
 
     /* Header e Mascote */
@@ -34,26 +52,21 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: radial-gradient(circle at center, rgba(0, 255, 136, 0.05), transparent);
       padding: 20px;
+      position: relative;
     }
 
     .mascote {
-      width: 150px;
-      margin-bottom: -10px;
-      filter: drop-shadow(0 0 15px var(--primary));
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+      width: 160px;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.3));
     }
 
     .hero h1 { 
       font-size: clamp(2.5rem, 8vw, 4rem); 
       font-weight: 800; 
       margin-bottom: 5px;
+      z-index: 1;
     }
 
     .hero span {
@@ -61,36 +74,21 @@
       text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
     }
 
-    .typewriter {
+    .hero p {
       color: var(--text-gray);
       font-size: 1.1rem;
       max-width: 600px;
-      overflow: hidden;
-      border-right: 2px solid var(--primary);
-      white-space: nowrap;
-      margin: 0 auto;
-      letter-spacing: .10em;
-      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: var(--primary); }
+      z-index: 1;
     }
 
     /* Slider de Tech */
     .tech-slider {
-      background: rgba(0, 255, 136, 0.02);
+      background: rgba(15, 23, 42, 0.5);
       padding: 15px 0;
       border-top: 1px solid rgba(0, 255, 136, 0.1);
       border-bottom: 1px solid rgba(0, 255, 136, 0.1);
       overflow: hidden;
-      margin-bottom: 10px;
+      backdrop-filter: blur(5px);
     }
 
     .slide-track {
@@ -119,85 +117,88 @@
 
     /* Seção de Projetos */
     section {
-      padding: 60px 20px;
+      padding: 80px 20px;
       max-width: 1200px;
       margin: auto;
+      position: relative;
     }
 
-    h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; }
+    h2 { text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
     h2 span { color: var(--primary); }
 
     .grid-projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
+      gap: 30px;
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: 12px;
+      border-radius: 15px;
       overflow: hidden;
-      border: 1px solid rgba(0, 255, 136, 0.05);
-      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: 0.4s ease;
       display: flex;
       flex-direction: column;
       height: 100%;
+      backdrop-filter: blur(10px);
     }
 
     .card:hover {
-      transform: translateY(-12px) scale(1.02);
+      transform: translateY(-10px);
       border-color: var(--primary);
-      box-shadow: 0 20px 40px rgba(0, 255, 136, 0.15);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 136, 0.1);
     }
 
-    .card-img { width: 100%; height: 200px; object-fit: cover; background: #000; filter: grayscale(20%); transition: 0.5s; }
-    .card:hover .card-img { filter: grayscale(0%); }
+    .card-img { width: 100%; height: 200px; object-fit: cover; transition: 0.5s; }
+    .card:hover .card-img { transform: scale(1.05); }
 
-    .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-    .card-content h3 { margin-bottom: 10px; font-size: 1.3rem; color: #fff; }
-    .card-content p { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+    .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+    .card-content h3 { margin-bottom: 12px; font-size: 1.4rem; color: #fff; }
+    .card-content p { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1; }
 
     .btn {
       display: inline-block;
-      padding: 12px 16px;
-      background: var(--primary);
-      color: #020617;
+      padding: 12px 20px;
+      background: transparent;
+      color: var(--primary);
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 8px;
+      border: 1px solid var(--primary);
       font-weight: 700;
       font-size: 0.85rem;
       text-align: center;
       transition: 0.3s;
     }
 
-    .btn:hover { background: #fff; transform: scale(1.05); }
+    .btn:hover { background: var(--primary); color: #020617; box-shadow: 0 0 15px var(--primary); }
 
     footer {
-      background: #010409;
+      background: rgba(1, 4, 9, 0.9);
       padding: 60px 20px;
       text-align: center;
-      border-top: 1px solid var(--secondary);
+      border-top: 1px solid rgba(0, 255, 136, 0.1);
       margin-top: 40px;
     }
 
     .social-icons { margin-bottom: 20px; display: flex; justify-content: center; gap: 25px; }
     .social-icons a { color: #fff; font-size: 2rem; transition: 0.3s; }
-    .social-icons a:hover { color: var(--primary); transform: translateY(-5px) rotate(8deg); }
+    .social-icons a:hover { color: var(--primary); transform: translateY(-5px); }
 
     @media (max-width: 768px) {
-      .hero { height: auto; padding: 100px 20px 60px; }
-      .hero h1 { font-size: 2.5rem; }
+      .hero { height: auto; padding: 80px 20px 40px; }
       .grid-projects { grid-template-columns: 1fr; }
-      .typewriter { white-space: normal; border-right: none; animation: none; width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <header class="hero" data-aos="fade-down">
-    <img src="https://cdn3d.iconscout.com/3d/premium/thumb/male-developer-working-in-office-3d-icon-download-in-png-blend-fbx-gltf-file-formats--coding-person-man-people-pack-icons-5374062.png" alt="Mascote Dev" class="mascote">
+  <div class="bg-glow"></div>
+
+  <header class="hero" data-aos="zoom-in">
+    <img src="https://cdn3d.iconscout.com/3d/premium/thumb/male-developer-working-in-office-3d-icon-download-in-png-blend-fbx-gltf-file-formats--coding-person-man-people-pack-icons-5374062.png" alt="Dev Luan" class="mascote">
     <h1>Luan <span>Carlos</span></h1>
-    <div class="typewriter">Especialista em E-commerce e UI/UX de alta performance.</div>
+    <p>Transformando ideias em experiências digitais de alto impacto.</p>
   </header>
 
   <div class="tech-slider">
@@ -218,15 +219,15 @@
   </div>
 
   <section id="trabalhos">
-    <h2 data-aos="fade-up">Portfólio de <span>Projetos</span></h2>
+    <h2 data-aos="fade-up">Projetos em <span>Destaque</span></h2>
     <div class="grid-projects">
       
       <div class="card" data-aos="fade-up">
-        <img src="https://i.postimg.cc/mD7XvX4Y/image.jpg" class="card-img" alt="Terra Forte Locações">
+        <img src="https://i.postimg.cc/mD7XvX4Y/image.jpg" class="card-img" alt="Terra Forte">
         <div class="card-content">
           <h3>Terra Forte Locações</h3>
-          <p>Landing page empresarial para locação de máquinas pesadas, focada em conversão e autoridade de marca.</p>
-          <a href="https://terrafortes.netlify.app/" target="_blank" class="btn">Ver Projeto</a>
+          <p>Solução corporativa robusta para locação de máquinas pesadas, otimizada para SEO e conversão.</p>
+          <a href="https://terrafortes.netlify.app/" target="_blank" class="btn">Explorar Projeto</a>
         </div>
       </div>
 
@@ -234,7 +235,7 @@
         <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600" class="card-img" alt="Pizzaria Cariri">
         <div class="card-content">
           <h3>Pizzaria Cariri</h3>
-          <p>Menu digital dinâmico e otimizado para facilitar o fluxo de pedidos em pizzarias.</p>
+          <p>Cardápio digital inteligente com interface focada na rapidez de escolha do cliente.</p>
           <a href="https://pizzariacariri.netlify.app/" target="_blank" class="btn">Ver Menu</a>
         </div>
       </div>
@@ -243,7 +244,7 @@
         <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600" class="card-img" alt="Terreiro do Barbosa">
         <div class="card-content">
           <h3>Terreiro do Barbosa</h3>
-          <p>Cardápio digital para Bar e Restaurante, focado em experiência do usuário e visual atrativo.</p>
+          <p>Experiência digital personalizada para bares e restaurantes, unindo design e funcionalidade.</p>
           <a href="https://terreirodobarbosa.netlify.app/" target="_blank" class="btn">Ver Cardápio</a>
         </div>
       </div>
@@ -252,7 +253,7 @@
         <img src="https://i.postimg.cc/0jXyvN3S/dra-celine-capa.jpg" class="card-img" alt="Dra Celine">
         <div class="card-content">
           <h3>Dra. Celine Conceito</h3>
-          <p>E-commerce de alto padrão para venda de Scrubs e Jalecos premium com design minimalista.</p>
+          <p>E-commerce premium focado no mercado de moda médica de luxo, com UI minimalista.</p>
           <a href="https://draceline.com.br/" target="_blank" class="btn">Visitar Loja</a>
         </div>
       </div>
@@ -261,7 +262,7 @@
         <img src="https://dcdn-us.mitiendanube.com/stores/006/749/465/themes/common/logo-1119475648-1758577722-7f3865c1c55ac49a923a3a0e344aa8ce1758577722-640-0.webp" class="card-img" alt="TN Black">
         <div class="card-content">
           <h3>Loja TN Black</h3>
-          <p>Loja virtual integrada à Nuvemshop com foco em vestuário e experiência de compra fluida.</p>
+          <p>Integração de checkout e experiência de compra fluida para vestuário masculino e feminino.</p>
           <a href="https://tnblack.com.br" target="_blank" class="btn">Acessar Loja</a>
         </div>
       </div>
@@ -270,7 +271,7 @@
         <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=600" class="card-img" alt="Dra Celine Hub">
         <div class="card-content">
           <h3>Dra. Celine Hub</h3>
-          <p>Página de links estratégicos para mídias sociais, centralizando todos os serviços em um só lugar.</p>
+          <p>Hub de links estratégicos para conversão direta via redes sociais e atendimento.</p>
           <a href="https://draceline.netlify.app/" target="_blank" class="btn">Ver Hub</a>
         </div>
       </div>
