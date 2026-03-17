@@ -21,9 +21,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-
     body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; }
-
     #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
 
     /* --- HEADER --- */
@@ -35,16 +33,17 @@
     .nav-socials a:hover { color: var(--primary); border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
 
     /* --- HERO --- */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 100px 24px 40px; }
-    .especialista-tag { background: rgba(57, 255, 20, 0.1); border: 1px solid var(--primary); padding: 8px 20px; border-radius: 5px; color: var(--primary); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; display: flex; align-items: center; gap: 8px; }
-    .especialista-tag .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 24px 40px; }
+    .status-tag { background: rgba(57, 255, 20, 0.05); border: 1px solid var(--primary); padding: 8px 20px; border-radius: 5px; color: var(--primary); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; display: flex; align-items: center; gap: 8px; box-shadow: 0 0 10px rgba(57, 255, 20, 0.1); }
+    .status-tag .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     
-    .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 30px; text-transform: none; }
+    .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 30px; }
     .hero h1 span { color: var(--primary); }
     .hero p { color: var(--text-muted); max-width: 600px; font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; }
 
     .hero-btns { display: flex; gap: 20px; }
-    .btn { padding: 18px 35px; border-radius: 5px; font-weight: 700; text-decoration: none; transition: 0.4s; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+    .btn { padding: 18px 35px; border-radius: 5px; font-weight: 700; text-decoration: none; transition: 0.4s; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; cursor: pointer; display: inline-block; }
     .btn-primary { background: var(--primary); color: #000; border: none; }
     .btn-primary:hover { box-shadow: 0 0 30px var(--primary-glow); transform: translateY(-3px); }
     .btn-secondary { border: 1px solid var(--glass-border); color: #fff; }
@@ -54,10 +53,10 @@
     .stat-item h2 { font-size: 2.5rem; color: var(--primary); }
     .stat-item p { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
 
-    /* --- SLIDER TECNOLOGIAS --- */
-    .tech-slider { border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 30px 0; overflow: hidden; background: rgba(255,255,255,0.02); }
-    .slide-track { display: flex; width: calc(250px * 10); animation: scroll 20s linear infinite; gap: 50px; }
-    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 5)); } }
+    /* --- TECH SLIDER --- */
+    .tech-slider { border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 30px 0; overflow: hidden; background: rgba(255,255,255,0.01); }
+    .slide-track { display: flex; width: calc(250px * 12); animation: scroll 25s linear infinite; gap: 50px; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 6)); } }
     .slide { width: 200px; display: flex; align-items: center; gap: 15px; color: var(--text-muted); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
     .slide i { color: var(--primary); font-size: 1.5rem; }
 
@@ -71,24 +70,30 @@
     .about-text p { color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; }
     .about-text b { color: #fff; }
 
+    /* --- PROJETOS --- */
+    .projects-section { padding: 100px 10%; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+    .project-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; transition: 0.4s; }
+    .project-card:hover { border-color: var(--primary); transform: translateY(-10px); }
+    .card-img { width: 100%; height: 200px; object-fit: cover; opacity: 0.7; transition: 0.4s; }
+    .project-card:hover .card-img { opacity: 1; }
+    .card-content { padding: 25px; }
+    .card-content h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .card-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; }
+    .project-link { color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; }
+
     /* --- CONTATO --- */
     .contact-grid { display: grid; grid-template-columns: 1fr; gap: 40px; padding: 0 10%; margin-bottom: 100px; }
     @media (min-width: 992px) { .contact-grid { grid-template-columns: 1fr 1.5fr; } }
-    
-    .contact-info { display: flex; flex-direction: column; gap: 30px; }
-    .info-card { display: flex; align-items: center; gap: 20px; }
-    .info-icon { width: 60px; height: 60px; background: rgba(57, 255, 20, 0.05); border: 1px solid var(--glass-border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; }
-    .info-detail h4 { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; }
-
+    .info-card { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+    .info-icon { width: 60px; height: 60px; background: rgba(57, 255, 20, 0.05); border: 1px solid var(--glass-border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
     .contact-form { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--glass-border); }
     .form-group { margin-bottom: 20px; }
     .form-group label { display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; }
-    input, textarea { width: 100%; background: #1a1a1a; border: 1px solid var(--glass-border); padding: 15px; color: #fff; border-radius: 8px; outline: none; }
+    input, textarea { width: 100%; background: #000; border: 1px solid var(--glass-border); padding: 15px; color: #fff; border-radius: 8px; outline: none; transition: 0.3s; }
     input:focus, textarea:focus { border-color: var(--primary); }
 
     footer { border-top: 1px solid var(--glass-border); padding: 50px 10%; text-align: center; }
-    .footer-credits { color: var(--text-muted); font-size: 0.8rem; margin-top: 20px; }
-    .footer-credits span { color: var(--primary); }
   </style>
 </head>
 <body>
@@ -96,29 +101,29 @@
   <div id="particles-js"></div>
 
   <nav>
-    <div class="logo">Luan<span>.</span></div>
+    <div class="logo">Luan Carlos<span>.</span></div>
     <div class="nav-socials">
-      <a href="https://wa.me/5588992791644"><i class="fab fa-whatsapp"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://wa.me/5588992791644" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://github.com/LuanCarlos20" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank"><i class="fab fa-linkedin-in"></i></a>
     </div>
   </nav>
 
   <section class="hero">
-    <div class="especialista-tag" data-aos="fade-down">
-      <div class="dot"></div> especialista em
+    <div class="status-tag" data-aos="fade-down">
+      <div class="dot"></div> Disponível para Contato
     </div>
     <h1 data-aos="fade-up">Desenvolvimento <span>Full-Stack</span> de Aplicações Web</h1>
-    <p data-aos="fade-up" data-aos-delay="100">Graduando em Análise e Desenvolvimento de Sistemas e especialista em desenvolvimento full-stack. Transformo ideias em produtos digitais de alto impacto.</p>
+    <p data-aos="fade-up" data-aos-delay="100">Transformo ideias em produtos digitais de alto impacto, unindo design moderno e performance técnica.</p>
     
     <div class="hero-btns" data-aos="fade-up" data-aos-delay="200">
-      <a href="#contato" class="btn btn-primary">Entre em Contato →</a>
+      <a href="#contato" class="btn btn-primary">Iniciar Projeto →</a>
       <a href="#trabalhos" class="btn btn-secondary">Ver Portfólio</a>
     </div>
 
     <div class="stats" data-aos="fade-up" data-aos-delay="300">
       <div class="stat-item"><h2>6+</h2><p>Projetos</p></div>
-      <div class="stat-item"><h2>4+</h2><p>Anos de Exp.</p></div>
+      <div class="stat-item"><h2>2+</h2><p>Anos de Exp.</p></div>
     </div>
   </section>
 
@@ -128,14 +133,51 @@
       <div class="slide"><i class="fab fa-css3-alt"></i> CSS3</div>
       <div class="slide"><i class="fab fa-js"></i> JavaScript</div>
       <div class="slide"><i class="fab fa-python"></i> Python</div>
+      <div class="slide"><i class="fab fa-php"></i> PHP & Laravel</div>
       <div class="slide"><i class="fab fa-react"></i> React.js</div>
       <div class="slide"><i class="fab fa-html5"></i> HTML5</div>
       <div class="slide"><i class="fab fa-css3-alt"></i> CSS3</div>
       <div class="slide"><i class="fab fa-js"></i> JavaScript</div>
       <div class="slide"><i class="fab fa-python"></i> Python</div>
+      <div class="slide"><i class="fab fa-php"></i> PHP & Laravel</div>
       <div class="slide"><i class="fab fa-react"></i> React.js</div>
     </div>
   </div>
+
+  <section id="trabalhos" class="projects-section">
+    <div class="section-label">Portfólio</div>
+    <h2 style="font-size: 3rem; margin-bottom: 20px;">Meus Projetos</h2>
+    <div class="projects-grid">
+      
+      <div class="project-card" data-aos="fade-up">
+        <img src="https://i.postimg.cc/mD7XvX4Y/image.jpg" class="card-img">
+        <div class="card-content">
+          <h3>Terra Forte Locações</h3>
+          <p>Plataforma completa para locação de máquinas pesadas.</p>
+          <a href="https://terrafortes.netlify.app/" target="_blank" class="project-link">Visitar Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600" class="card-img">
+        <div class="card-content">
+          <h3>Pizzaria Cariri</h3>
+          <p>Cardápio digital interativo para pedidos em tempo real.</p>
+          <a href="https://pizzariacariri.netlify.app/" target="_blank" class="project-link">Visitar Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://i.postimg.cc/0jXyvN3S/dra-celine-capa.jpg" class="card-img">
+        <div class="card-content">
+          <h3>Dra. Celine Conceito</h3>
+          <p>E-commerce premium focado em moda médica de luxo.</p>
+          <a href="https://draceline.com.br/" target="_blank" class="project-link">Visitar Site →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <section class="about-section" id="sobre">
     <div class="about-text" data-aos="fade-right">
@@ -143,29 +185,25 @@
       <h2>Quem sou eu</h2>
       <p>
         Sou <b>Luan Carlos</b>, desenvolvedor full-stack em formação e apaixonado por criar soluções web robustas e escaláveis. <br><br>
-        Atualmente curso <b>Análise e Desenvolvimento de Sistemas</b> na <b>Uniasselvi - Centro Universitário Leonardo da Vinci — Ead</b>, onde construo a base técnica e a visão de produto para entregar software que gera valor.
+        Atualmente curso <b>Análise e Desenvolvimento de Sistemas</b> na <b>Uniasselvi</b>, onde construo a base técnica para entregar software que gera valor real ao negócio.
       </p>
     </div>
     <div style="display: flex; align-items: center; justify-content: center;" data-aos="fade-left">
         <div style="width: 100%; height: 300px; border: 1px solid var(--primary); border-radius: 20px; background: rgba(57, 255, 20, 0.02); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 5rem;">
-            <i class="fas fa-code"></i>
+            <i class="fas fa-terminal"></i>
         </div>
     </div>
   </section>
 
-  <section id="contato" style="padding-top: 100px;">
+  <section id="contato" style="padding: 100px 0;">
     <div class="section-label" style="margin-left: 10%;">Contato</div>
-    <h2 style="font-size: 3.5rem; margin-left: 10%; margin-bottom: 50px;">Vamos conversar</h2>
+    <h2 style="font-size: 3rem; margin-left: 10%; margin-bottom: 50px;">Vamos conversar</h2>
     
     <div class="contact-grid">
       <div class="contact-info" data-aos="fade-up">
         <div class="info-card">
           <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
           <div class="info-detail"><h4>Telefone / Whatsapp</h4><p>+55 88 99279-1644</p></div>
-        </div>
-        <div class="info-card">
-          <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <div class="info-detail"><h4>Localização</h4><p>Barbalha-CE, Ceará</p></div>
         </div>
         <div class="info-card">
           <div class="info-icon"><i class="fas fa-envelope"></i></div>
@@ -176,8 +214,7 @@
       <div class="contact-form" data-aos="fade-up">
         <form onsubmit="enviarEmail(); return false;">
           <div class="form-group"><label>Seu Nome</label><input type="text" id="nome" placeholder="João Silva" required></div>
-          <div class="form-group"><label>Assunto</label><input type="text" id="assunto" placeholder="Preciso de um sistema web"></div>
-          <div class="form-group"><label>Mensagem</label><textarea id="mensagem" rows="4" placeholder="Descreva seu projeto ou dúvida..." required></textarea></div>
+          <div class="form-group"><label>Mensagem</label><textarea id="mensagem" rows="4" placeholder="Descreva seu projeto..." required></textarea></div>
           <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem →</button>
         </form>
       </div>
@@ -186,7 +223,7 @@
 
   <footer>
     <p>© 2026 <span>Luan Carlos</span> — Todos os direitos reservados</p>
-    <div class="footer-credits">Desenvolvido com <i class="fas fa-heart" style="color: var(--primary);"></i> em Barbalha-CE</div>
+    <div style="margin-top: 15px; font-size: 0.7rem; color: #555; letter-spacing: 1px;">Desenvolvido com <i class="fas fa-heart" style="color: var(--primary);"></i> em Barbalha-CE</div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -196,19 +233,14 @@
 
     function enviarEmail() {
       const nome = document.getElementById('nome').value;
-      const assunto = document.getElementById('assunto').value || "Contato Portfólio";
       const mensagem = document.getElementById('mensagem').value;
-      const emailDestino = "Luancfelix30@gmail.com";
-      
-      const mailtoLink = `mailto:${emailDestino}?subject=${encodeURIComponent(assunto)}&body=Nome: ${encodeURIComponent(nome)}%0D%0A%0D%0A${encodeURIComponent(mensagem)}`;
-      window.location.href = mailtoLink;
+      window.location.href = `mailto:Luancfelix30@gmail.com?subject=Contato Portfólio&body=Nome: ${nome}%0A%0AMensagem: ${mensagem}`;
     }
 
     particlesJS("particles-js", {
       "particles": {
-        "number": { "value": 50 },
+        "number": { "value": 40 },
         "color": { "value": "#39FF14" },
-        "shape": { "type": "circle" },
         "opacity": { "value": 0.2 },
         "size": { "value": 2 },
         "line_linked": { "enable": true, "distance": 150, "color": "#39FF14", "opacity": 0.1, "width": 1 },
