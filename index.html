@@ -26,9 +26,9 @@
       overflow-x: hidden;
     }
 
-    /* Header Compacto */
+    /* Header e Mascote */
     .hero {
-      height: 45vh; 
+      height: 60vh; 
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -36,6 +36,18 @@
       text-align: center;
       background: radial-gradient(circle at center, rgba(0, 255, 136, 0.05), transparent);
       padding: 20px;
+    }
+
+    .mascote {
+      width: 150px;
+      margin-bottom: -10px;
+      filter: drop-shadow(0 0 15px var(--primary));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
 
     .hero h1 { 
@@ -46,10 +58,30 @@
 
     .hero span {
       color: var(--primary);
-      text-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+      text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
     }
 
-    .hero p { color: var(--text-gray); font-size: 1.1rem; max-width: 600px; opacity: 0.8; }
+    .typewriter {
+      color: var(--text-gray);
+      font-size: 1.1rem;
+      max-width: 600px;
+      overflow: hidden;
+      border-right: 2px solid var(--primary);
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: .10em;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--primary); }
+    }
 
     /* Slider de Tech */
     .tech-slider {
@@ -87,7 +119,7 @@
 
     /* Seção de Projetos */
     section {
-      padding: 40px 20px;
+      padding: 60px 20px;
       max-width: 1200px;
       margin: auto;
     }
@@ -106,19 +138,21 @@
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(0, 255, 136, 0.05);
-      transition: 0.3s;
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: flex;
       flex-direction: column;
       height: 100%;
     }
 
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-12px) scale(1.02);
       border-color: var(--primary);
-      box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 255, 136, 0.15);
     }
 
-    .card-img { width: 100%; height: 200px; object-fit: cover; background: #000; }
+    .card-img { width: 100%; height: 200px; object-fit: cover; background: #000; filter: grayscale(20%); transition: 0.5s; }
+    .card:hover .card-img { filter: grayscale(0%); }
+
     .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
     .card-content h3 { margin-bottom: 10px; font-size: 1.3rem; color: #fff; }
     .card-content p { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
@@ -136,7 +170,7 @@
       transition: 0.3s;
     }
 
-    .btn:hover { filter: brightness(1.2); transform: scale(1.02); }
+    .btn:hover { background: #fff; transform: scale(1.05); }
 
     footer {
       background: #010409;
@@ -148,20 +182,22 @@
 
     .social-icons { margin-bottom: 20px; display: flex; justify-content: center; gap: 25px; }
     .social-icons a { color: #fff; font-size: 2rem; transition: 0.3s; }
-    .social-icons a:hover { color: var(--primary); transform: translateY(-5px); }
+    .social-icons a:hover { color: var(--primary); transform: translateY(-5px) rotate(8deg); }
 
     @media (max-width: 768px) {
-      .hero { height: auto; padding: 60px 20px; }
+      .hero { height: auto; padding: 100px 20px 60px; }
       .hero h1 { font-size: 2.5rem; }
       .grid-projects { grid-template-columns: 1fr; }
+      .typewriter { white-space: normal; border-right: none; animation: none; width: 100%; }
     }
   </style>
 </head>
 <body>
 
   <header class="hero" data-aos="fade-down">
+    <img src="https://cdn3d.iconscout.com/3d/premium/thumb/male-developer-working-in-office-3d-icon-download-in-png-blend-fbx-gltf-file-formats--coding-person-man-people-pack-icons-5374062.png" alt="Mascote Dev" class="mascote">
     <h1>Luan <span>Carlos</span></h1>
-    <p>Software Developer focado em soluções robustas de E-commerce, Sistemas Empresariais e UI/UX.</p>
+    <div class="typewriter">Especialista em E-commerce e UI/UX de alta performance.</div>
   </header>
 
   <div class="tech-slider">
@@ -231,11 +267,11 @@
       </div>
 
       <div class="card" data-aos="fade-up" data-aos-delay="500">
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600" class="card-img" alt="Menu Digital">
+        <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=600" class="card-img" alt="Dra Celine Hub">
         <div class="card-content">
-          <h3>Admin Panel Menu</h3>
-          <p>Sistema Web App para gestão administrativa de cardápios com controle de preços em tempo real.</p>
-          <a href="https://github.com/LuanCarlos20" target="_blank" class="btn">Código Fonte</a>
+          <h3>Dra. Celine Hub</h3>
+          <p>Página de links estratégicos para mídias sociais, centralizando todos os serviços em um só lugar.</p>
+          <a href="https://draceline.netlify.app/" target="_blank" class="btn">Ver Hub</a>
         </div>
       </div>
 
