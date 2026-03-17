@@ -27,23 +27,23 @@
       overflow-x: hidden;
     }
 
-    /* --- AVATAR NO TOPO --- */
-    .profile-header {
-      padding-top: 60px;
+    /* --- REDES SOCIAIS NO TOPO --- */
+    .social-header {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
     }
 
-    .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 2px solid var(--primary);
-      padding: 5px;
-      background: var(--bg);
-      box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
-      object-fit: cover;
+    .social-icon-top {
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .social-icon-top:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
     }
 
     /* --- STATUS PULSAR --- */
@@ -52,7 +52,7 @@
       border: 1px solid rgba(0, 123, 255, 0.15);
       padding: 8px 16px; border-radius: 50px;
       color: var(--primary); font-size: 0.7rem; font-weight: 700;
-      display: inline-flex; align-items: center; gap: 10px; margin: 20px 0;
+      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;
     }
 
     .status-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; position: relative; }
@@ -65,9 +65,9 @@
 
     /* --- HERO --- */
     .hero {
-      min-height: 80vh; display: flex; flex-direction: column;
+      min-height: 90vh; display: flex; flex-direction: column;
       justify-content: center; align-items: center; text-align: center;
-      padding: 20px 24px;
+      padding: 60px 24px;
     }
 
     .hero h1 { 
@@ -88,7 +88,7 @@
       padding: 16px 28px; border-radius: 12px; text-decoration: none;
       font-weight: 700; font-size: 0.9rem; transition: 0.4s; text-align: center;
     }
-    .btn-filled { background: var(--primary); color: #fff; }
+    .btn-filled { background: var(--primary); color: #fff; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); }
     .btn-outline { background: rgba(255,255,255,0.03); color: #fff; border: 1px solid var(--glass-border); }
     .btn-outline:hover { border-color: var(--primary); }
 
@@ -111,7 +111,7 @@
     .card-img { width: 100%; height: 200px; object-fit: cover; }
     .card-content { padding: 25px; }
     .card-content h3 { font-size: 1.3rem; margin-bottom: 10px; }
-    .card-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; }
+    .card-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; height: 60px; overflow: hidden; }
 
     /* --- CONTATO --- */
     .contact-section { padding: 80px 20px; max-width: 1100px; margin: auto; }
@@ -137,16 +137,19 @@
 </head>
 <body>
 
-  <header class="profile-header" data-aos="fade-down">
-    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Luan Carlos" class="avatar">
-    </header>
-
   <section class="hero" data-aos="fade-up">
+    <div class="social-header">
+      <a href="https://github.com/LuanCarlos20" target="_blank" class="social-icon-top"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank" class="social-icon-top"><i class="fab fa-linkedin"></i></a>
+      <a href="https://wa.me/5588992791644" target="_blank" class="social-icon-top"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
     <div class="status-badge">
         <div class="status-dot"></div> Disponível para novos projetos
     </div>
-    <h1>Desenvolvedor<br><span>Full-Stack</span></h1>
-    <p>Criando soluções digitais de alto impacto direto de Barbalha-CE.</p>
+
+    <h1>Luan Carlos<br><span>Full-Stack Developer</span></h1>
+    <p>Graduando em Sistemas de Informação. Especialista em criar experiências digitais modernas e sistemas de alto desempenho.</p>
     
     <div class="hero-btns">
       <a href="#contato" class="btn btn-filled">Entre em contato</a>
@@ -218,29 +221,29 @@
   <section id="contato" class="contact-section">
     <div class="contact-container" data-aos="zoom-in">
       <div>
-        <h2>Vamos conversar?</h2>
-        <p style="margin: 15px 0 30px; color: var(--text-muted);">Estou disponível para novos projetos e parcerias.</p>
+        <h2>Inicie um projeto</h2>
+        <p style="margin: 15px 0 30px; color: var(--text-muted);">Estou pronto para transformar sua ideia em código.</p>
         <a href="https://wa.me/5588992791644" class="whatsapp-btn" target="_blank">
-          <span><strong>WhatsApp</strong><br><small>Clique para iniciar conversa</small></span>
+          <span><strong>WhatsApp</strong><br><small>Conversar agora</small></span>
           <i class="fab fa-whatsapp" style="font-size: 1.8rem; color: #25d366;"></i>
         </a>
       </div>
       <div>
-        <form>
+        <form action="mailto:Luancfelix30@gmail.com" method="post" enctype="text/plain">
           <input type="text" placeholder="Seu nome" required>
-          <textarea rows="4" placeholder="Sua mensagem" required></textarea>
-          <button type="submit" class="btn btn-filled" style="width: 100%; border: none; cursor: pointer;">Enviar</button>
+          <textarea rows="4" placeholder="Como posso ajudar?" required></textarea>
+          <button type="submit" class="btn btn-filled" style="width: 100%; border: none; cursor: pointer;">Enviar Mensagem</button>
         </form>
       </div>
     </div>
   </section>
 
   <footer>
-    <div style="margin-bottom: 20px;">
-      <a href="https://github.com/LuanCarlos20" target="_blank" style="color: #fff; margin: 0 15px; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank" style="color: #fff; margin: 0 15px; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+    <p style="margin-bottom: 20px;">&copy; 2026 Luan Carlos | Barbalha-CE</p>
+    <div>
+      <a href="https://github.com/LuanCarlos20" target="_blank" style="color: var(--text-muted); margin: 0 10px;"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank" style="color: var(--text-muted); margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p>&copy; 2026 Luan Carlos</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
