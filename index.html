@@ -11,207 +11,182 @@
   
   <style>
     :root {
-      --primary: #00843d; /* Verde Palmeiras */
-      --primary-glow: rgba(0, 132, 61, 0.4);
-      --bg: #050705;
-      --card-bg: rgba(15, 20, 15, 0.8);
+      --primary: #39FF14; 
+      --primary-glow: rgba(57, 255, 20, 0.4);
+      --bg: #0a0a0a;
+      --card-bg: #121212;
       --text-main: #ffffff;
-      --text-muted: #a0b0a0;
-      --glass-border: rgba(255, 255, 255, 0.07);
+      --text-muted: #888888;
+      --glass-border: rgba(255, 255, 255, 0.05);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
 
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      overflow-x: hidden;
-    }
+    body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; }
 
-    #particles-js {
-      position: fixed;
-      width: 100%; height: 100%;
-      top: 0; left: 0;
-      z-index: -1;
-      background-color: var(--bg);
-    }
+    #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
 
-    /* --- REDES SOCIAIS TOPO --- */
-    .social-header { display: flex; gap: 25px; margin-bottom: 30px; }
-    .social-icon-top { color: var(--text-main); font-size: 1.6rem; transition: 0.4s; }
-    .social-icon-top:hover { color: var(--primary); transform: translateY(-5px); text-shadow: 0 0 15px var(--primary); }
-
-    /* --- STATUS PULSAR (CORRIGIDO) --- */
-    .status-badge {
-      background: rgba(0, 132, 61, 0.1);
-      border: 1px solid rgba(0, 132, 61, 0.3);
-      padding: 10px 20px; border-radius: 50px;
-      color: var(--primary); font-size: 0.75rem; font-weight: 800;
-      display: inline-flex; align-items: center; /* Centraliza verticalmente */
-      justify-content: center;
-      gap: 12px; margin-bottom: 30px;
-      line-height: 1; /* Garante que o texto não empurre o badge */
-    }
-
-    .status-dot { 
-      width: 10px; height: 10px; 
-      background: var(--primary); 
-      border-radius: 50%; 
-      display: inline-block; /* Garante o alinhamento correto */
-      position: relative;
-    }
-    .status-dot::after {
-      content: ''; position: absolute; width: 100%; height: 100%;
-      background: var(--primary); border-radius: 50%;
-      animation: pulse-ring 2s infinite;
-      left: 0; top: 0;
-    }
-    @keyframes pulse-ring { 0% {transform: scale(.5); opacity: 1;} 100% {transform: scale(3.5); opacity: 0;} }
+    /* --- HEADER --- */
+    nav { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+    .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+    .logo span { color: var(--primary); }
+    .nav-socials { display: flex; gap: 15px; }
+    .nav-socials a { color: var(--text-main); font-size: 1.2rem; transition: 0.3s; width: 40px; height: 40px; border: 1px solid var(--glass-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .nav-socials a:hover { color: var(--primary); border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
 
     /* --- HERO --- */
-    .hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-      padding: 40px 24px;
-    }
-    .hero h1 { font-size: clamp(2.5rem, 10vw, 5rem); line-height: 1.1; font-weight: 800; letter-spacing: -2px; margin-bottom: 25px; }
-    .hero h1 span { background: linear-gradient(180deg, #fff 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p { color: var(--text-muted); max-width: 650px; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.6; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 100px 24px 40px; }
+    .especialista-tag { background: rgba(57, 255, 20, 0.1); border: 1px solid var(--primary); padding: 8px 20px; border-radius: 5px; color: var(--primary); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; display: flex; align-items: center; gap: 8px; }
+    .especialista-tag .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); }
+    
+    .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 30px; text-transform: none; }
+    .hero h1 span { color: var(--primary); }
+    .hero p { color: var(--text-muted); max-width: 600px; font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; }
 
-    /* --- BOTÕES --- */
-    .hero-btns { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 320px; }
-    .btn { padding: 18px 30px; border-radius: 15px; text-decoration: none; font-weight: 800; font-size: 0.9rem; transition: 0.5s; text-align: center; text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; }
-    .btn-filled { background: var(--primary); color: #fff; }
-    .btn-filled:hover { transform: translateY(-3px); box-shadow: 0 0 30px var(--primary-glow); }
-    .btn-outline { background: rgba(255,255,255,0.03); color: #fff; border: 1px solid var(--glass-border); backdrop-filter: blur(5px); }
-    .btn-outline:hover { border-color: var(--primary); background: rgba(0, 132, 61, 0.1); }
+    .hero-btns { display: flex; gap: 20px; }
+    .btn { padding: 18px 35px; border-radius: 5px; font-weight: 700; text-decoration: none; transition: 0.4s; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+    .btn-primary { background: var(--primary); color: #000; border: none; }
+    .btn-primary:hover { box-shadow: 0 0 30px var(--primary-glow); transform: translateY(-3px); }
+    .btn-secondary { border: 1px solid var(--glass-border); color: #fff; }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
 
-    /* --- PROJETOS --- */
-    .projects-section { padding: 80px 20px; max-width: 1300px; margin: auto; }
-    .projects-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-    @media (min-width: 768px) { .hero-btns { flex-direction: row; max-width: none; justify-content: center; } .projects-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1024px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
+    .stats { display: flex; gap: 50px; margin-top: 80px; }
+    .stat-item h2 { font-size: 2.5rem; color: var(--primary); }
+    .stat-item p { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
 
-    .project-card { background: var(--card-bg); backdrop-filter: blur(10px); border-radius: 25px; border: 1px solid var(--glass-border); overflow: hidden; transition: 0.5s ease; }
-    .project-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-    .card-img { width: 100%; height: 210px; object-fit: cover; }
-    .card-content { padding: 25px; }
-    .card-content h3 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 700; }
-    .card-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; height: 50px; overflow: hidden; }
+    /* --- SLIDER TECNOLOGIAS --- */
+    .tech-slider { border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 30px 0; overflow: hidden; background: rgba(255,255,255,0.02); }
+    .slide-track { display: flex; width: calc(250px * 10); animation: scroll 20s linear infinite; gap: 50px; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 5)); } }
+    .slide { width: 200px; display: flex; align-items: center; gap: 15px; color: var(--text-muted); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
+    .slide i { color: var(--primary); font-size: 1.5rem; }
+
+    /* --- SOBRE MIM --- */
+    .section-label { color: var(--primary); font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; }
+    .section-label::before { content: ""; width: 40px; height: 1px; background: var(--primary); display: inline-block; }
+    
+    .about-section { padding: 100px 10%; display: grid; grid-template-columns: 1fr; gap: 50px; }
+    @media (min-width: 992px) { .about-section { grid-template-columns: 1fr 1fr; } }
+    .about-text h2 { font-size: 3.5rem; margin-bottom: 30px; letter-spacing: -2px; }
+    .about-text p { color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; }
+    .about-text b { color: #fff; }
 
     /* --- CONTATO --- */
-    .contact-container { background: var(--card-bg); backdrop-filter: blur(10px); padding: 40px 25px; border-radius: 30px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 40px; margin: 60px 0; }
-    @media (min-width: 992px) { .contact-container { flex-direction: row; padding: 60px; } .contact-container > div { flex: 1; } }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 40px; padding: 0 10%; margin-bottom: 100px; }
+    @media (min-width: 992px) { .contact-grid { grid-template-columns: 1fr 1.5fr; } }
+    
+    .contact-info { display: flex; flex-direction: column; gap: 30px; }
+    .info-card { display: flex; align-items: center; gap: 20px; }
+    .info-icon { width: 60px; height: 60px; background: rgba(57, 255, 20, 0.05); border: 1px solid var(--glass-border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; }
+    .info-detail h4 { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; }
 
-    .whatsapp-btn { background: rgba(0, 132, 61, 0.1); padding: 20px; border-radius: 18px; text-decoration: none; color: #fff; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(0, 132, 61, 0.2); transition: 0.3s; }
-    .whatsapp-btn:hover { background: rgba(37, 211, 102, 0.1); border-color: #25d366; }
-
-    input, textarea { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); padding: 18px; color: #fff; border-radius: 12px; margin-bottom: 15px; outline: none; transition: 0.3s; }
+    .contact-form { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--glass-border); }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; }
+    input, textarea { width: 100%; background: #1a1a1a; border: 1px solid var(--glass-border); padding: 15px; color: #fff; border-radius: 8px; outline: none; }
     input:focus, textarea:focus { border-color: var(--primary); }
 
-    footer { text-align: center; padding: 60px 20px; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 2px; }
+    footer { border-top: 1px solid var(--glass-border); padding: 50px 10%; text-align: center; }
+    .footer-credits { color: var(--text-muted); font-size: 0.8rem; margin-top: 20px; }
+    .footer-credits span { color: var(--primary); }
   </style>
 </head>
 <body>
 
   <div id="particles-js"></div>
 
-  <section class="hero" data-aos="fade-up">
-    <div class="social-header">
-      <a href="https://github.com/LuanCarlos20" target="_blank" class="social-icon-top"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank" class="social-icon-top"><i class="fab fa-linkedin"></i></a>
-      <a href="https://wa.me/5588992791644" target="_blank" class="social-icon-top"><i class="fab fa-whatsapp"></i></a>
+  <nav>
+    <div class="logo">Luan<span>.</span></div>
+    <div class="nav-socials">
+      <a href="https://wa.me/5588992791644"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
     </div>
+  </nav>
 
-    <div class="status-badge">
-        <span class="status-dot"></span> Disponível para novos projetos
+  <section class="hero">
+    <div class="especialista-tag" data-aos="fade-down">
+      <div class="dot"></div> especialista em
     </div>
-
-    <h1>Luan Carlos<br><span>Especialista Full-Stack</span></h1>
-    <p>Especialista em desenvolvimento Full-Stack de aplicações Web. Transformo ideias em produtos digitais de alto impacto.</p>
+    <h1 data-aos="fade-up">Desenvolvimento <span>Full-Stack</span> de Aplicações Web</h1>
+    <p data-aos="fade-up" data-aos-delay="100">Graduando em Análise e Desenvolvimento de Sistemas e especialista em desenvolvimento full-stack. Transformo ideias em produtos digitais de alto impacto.</p>
     
-    <div class="hero-btns">
-      <a href="#contato" class="btn btn-filled">Iniciar um Projeto</a>
-      <a href="#trabalhos" class="btn btn-outline">Ver Portfólio</a>
+    <div class="hero-btns" data-aos="fade-up" data-aos-delay="200">
+      <a href="#contato" class="btn btn-primary">Entre em Contato →</a>
+      <a href="#trabalhos" class="btn btn-secondary">Ver Portfólio</a>
+    </div>
+
+    <div class="stats" data-aos="fade-up" data-aos-delay="300">
+      <div class="stat-item"><h2>6+</h2><p>Projetos</p></div>
+      <div class="stat-item"><h2>4+</h2><p>Anos de Exp.</p></div>
     </div>
   </section>
 
-  <section id="trabalhos" class="projects-section">
-    <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 50px;">Meus <span>Projetos</span></h2>
-    <div class="projects-grid">
-      <div class="project-card" data-aos="fade-up">
-        <img src="https://i.postimg.cc/mD7XvX4Y/image.jpg" class="card-img">
-        <div class="card-content">
-          <h3>Terra Forte Locações</h3>
-          <p>Solução completa para locação de máquinas pesadas.</p>
-          <a href="https://terrafortes.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
+  <div class="tech-slider">
+    <div class="slide-track">
+      <div class="slide"><i class="fab fa-html5"></i> HTML5</div>
+      <div class="slide"><i class="fab fa-css3-alt"></i> CSS3</div>
+      <div class="slide"><i class="fab fa-js"></i> JavaScript</div>
+      <div class="slide"><i class="fab fa-python"></i> Python</div>
+      <div class="slide"><i class="fab fa-react"></i> React.js</div>
+      <div class="slide"><i class="fab fa-html5"></i> HTML5</div>
+      <div class="slide"><i class="fab fa-css3-alt"></i> CSS3</div>
+      <div class="slide"><i class="fab fa-js"></i> JavaScript</div>
+      <div class="slide"><i class="fab fa-python"></i> Python</div>
+      <div class="slide"><i class="fab fa-react"></i> React.js</div>
+    </div>
+  </div>
+
+  <section class="about-section" id="sobre">
+    <div class="about-text" data-aos="fade-right">
+      <div class="section-label">Sobre mim</div>
+      <h2>Quem sou eu</h2>
+      <p>
+        Sou <b>Luan Carlos</b>, desenvolvedor full-stack em formação e apaixonado por criar soluções web robustas e escaláveis. <br><br>
+        Atualmente curso <b>Análise e Desenvolvimento de Sistemas</b> na <b>Uniasselvi - Centro Universitário Leonardo da Vinci — Ead</b>, onde construo a base técnica e a visão de produto para entregar software que gera valor.
+      </p>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center;" data-aos="fade-left">
+        <div style="width: 100%; height: 300px; border: 1px solid var(--primary); border-radius: 20px; background: rgba(57, 255, 20, 0.02); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 5rem;">
+            <i class="fas fa-code"></i>
         </div>
-      </div>
-      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600" class="card-img">
-        <div class="card-content">
-          <h3>Pizzaria Cariri</h3>
-          <p>Cardápio digital interativo para pedidos online.</p>
-          <a href="https://pizzariacariri.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
-        </div>
-      </div>
-      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600" class="card-img">
-        <div class="card-content">
-          <h3>Terreiro do Barbosa</h3>
-          <p>Apresentação digital para restaurante regional.</p>
-          <a href="https://terreirodobarbosa.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
-        </div>
-      </div>
-      <div class="project-card" data-aos="fade-up">
-        <img src="https://i.postimg.cc/0jXyvN3S/dra-celine-capa.jpg" class="card-img">
-        <div class="card-content">
-          <h3>Dra. Celine Conceito</h3>
-          <p>Loja virtual premium de moda médica.</p>
-          <a href="https://draceline.com.br/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
-        </div>
-      </div>
-      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=600" class="card-img">
-        <div class="card-content">
-          <h3>Loja TN Black</h3>
-          <p>E-commerce moderno de vestuário masculino.</p>
-          <a href="https://tnblack.com.br" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
-        </div>
-      </div>
-      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=600" class="card-img">
-        <div class="card-content">
-          <h3>Dra. Celine Hub</h3>
-          <p>Central de links otimizada para redes sociais.</p>
-          <a href="https://draceline.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
-        </div>
-      </div>
     </div>
   </section>
 
-  <section id="contato" class="projects-section">
-    <div class="contact-container" data-aos="zoom-in">
-      <div>
-        <h2 style="font-size: 2rem; margin-bottom: 20px;">Vamos criar algo novo?</h2>
-        <p style="margin-bottom: 30px; color: var(--text-muted);">Estou disponível para conversar sobre seu próximo projeto.</p>
-        <a href="https://wa.me/5588992791644" class="whatsapp-btn" target="_blank">
-          <span><strong>WhatsApp</strong><br><small>Conversar agora</small></span>
-          <i class="fab fa-whatsapp" style="font-size: 1.8rem; color: #25d366;"></i>
-        </a>
+  <section id="contato" style="padding-top: 100px;">
+    <div class="section-label" style="margin-left: 10%;">Contato</div>
+    <h2 style="font-size: 3.5rem; margin-left: 10%; margin-bottom: 50px;">Vamos conversar</h2>
+    
+    <div class="contact-grid">
+      <div class="contact-info" data-aos="fade-up">
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="info-detail"><h4>Telefone / Whatsapp</h4><p>+55 88 99279-1644</p></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="info-detail"><h4>Localização</h4><p>Barbalha-CE, Ceará</p></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-envelope"></i></div>
+          <div class="info-detail"><h4>E-mail</h4><p>Luancfelix30@gmail.com</p></div>
+        </div>
       </div>
-      <div>
-        <form id="meuForm">
-          <input type="text" id="nome" placeholder="Seu Nome" required>
-          <textarea id="mensagem" rows="4" placeholder="Sua ideia ou mensagem..." required></textarea>
-          <button type="button" onclick="enviarEmail()" class="btn btn-filled" style="width: 100%;">Enviar Agora</button>
+
+      <div class="contact-form" data-aos="fade-up">
+        <form onsubmit="enviarEmail(); return false;">
+          <div class="form-group"><label>Seu Nome</label><input type="text" id="nome" placeholder="João Silva" required></div>
+          <div class="form-group"><label>Assunto</label><input type="text" id="assunto" placeholder="Preciso de um sistema web"></div>
+          <div class="form-group"><label>Mensagem</label><textarea id="mensagem" rows="4" placeholder="Descreva seu projeto ou dúvida..." required></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem →</button>
         </form>
       </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2026 Luan Carlos | Barbalha - Ceará
+    <p>© 2026 <span>Luan Carlos</span> — Todos os direitos reservados</p>
+    <div class="footer-credits">Desenvolvido com <i class="fas fa-heart" style="color: var(--primary);"></i> em Barbalha-CE</div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -221,32 +196,24 @@
 
     function enviarEmail() {
       const nome = document.getElementById('nome').value;
+      const assunto = document.getElementById('assunto').value || "Contato Portfólio";
       const mensagem = document.getElementById('mensagem').value;
       const emailDestino = "Luancfelix30@gmail.com";
       
-      if(nome && mensagem) {
-        const mailtoLink = `mailto:${emailDestino}?subject=Contato Portfólio - ${nome}&body=Olá Luan, me chamo ${nome}.%0D%0A%0D%0A${mensagem}`;
-        window.location.href = mailtoLink;
-      } else {
-        alert("Por favor, preencha o nome e a mensagem.");
-      }
+      const mailtoLink = `mailto:${emailDestino}?subject=${encodeURIComponent(assunto)}&body=Nome: ${encodeURIComponent(nome)}%0D%0A%0D%0A${encodeURIComponent(mensagem)}`;
+      window.location.href = mailtoLink;
     }
 
     particlesJS("particles-js", {
       "particles": {
-        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#00843d" },
+        "number": { "value": 50 },
+        "color": { "value": "#39FF14" },
         "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 3, "random": true },
-        "line_linked": { "enable": true, "distance": 150, "color": "#00843d", "opacity": 0.4, "width": 1 },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
-        "modes": { "grab": { "distance": 140 } }
-      },
-      "retina_detect": true
+        "opacity": { "value": 0.2 },
+        "size": { "value": 2 },
+        "line_linked": { "enable": true, "distance": 150, "color": "#39FF14", "opacity": 0.1, "width": 1 },
+        "move": { "enable": true, "speed": 1 }
+      }
     });
   </script>
 </body>
