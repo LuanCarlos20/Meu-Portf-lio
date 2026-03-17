@@ -44,6 +44,7 @@
     .status-tag { background: rgba(57, 255, 20, 0.05); border: 1px solid var(--primary); padding: 8px 18px; border-radius: 5px; color: var(--primary); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; display: flex; align-items: center; gap: 8px; }
     .status-tag .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
     
+    /* Quebra de linha ajustada no Mobile */
     .hero h1 { font-size: clamp(2.2rem, 9vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 25px; }
     .hero h1 span { color: var(--primary); display: block; } 
 
@@ -54,6 +55,7 @@
     .btn-primary { background: var(--primary); color: #000; border: none; }
     .btn-secondary { border: 1px solid var(--glass-border); color: #fff; background: rgba(255,255,255,0.02); }
 
+    /* Stats subindo para encostar no portfólio */
     .stats { display: flex; gap: 30px; margin-top: 35px; } 
     .stat-item h2 { font-size: 2.2rem; color: var(--primary); }
     .stat-item p { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
@@ -65,12 +67,16 @@
     
     .projects-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 40px; }
     .project-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; transition: 0.4s; }
-    .card-img { width: 100%; height: 180px; object-fit: cover; filter: grayscale(50%); transition: 0.4s; }
-    .project-card:hover .card-img { filter: grayscale(0%); transform: scale(1.05); }
+    .project-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(57, 255, 20, 0.05); }
+    
+    .card-icon-box { height: 180px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 3.5rem; transition: 0.4s; }
+    .project-card:hover .card-icon-box { background: #1f1f1f; color: #fff; }
+
     .card-content { padding: 22px; }
     .card-content h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--primary); }
     .card-content p { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 15px; line-height: 1.5; height: 45px; overflow: hidden; }
-    .project-link { color: #fff; text-decoration: none; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; border-bottom: 1px solid var(--primary); padding-bottom: 2px; }
+    .project-link { color: #fff; text-decoration: none; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; border-bottom: 1px solid var(--primary); padding-bottom: 2px; transition: 0.3s; }
+    .project-link:hover { color: var(--primary); letter-spacing: 1px; }
 
     /* --- SOBRE MIM --- */
     .about-section { padding: 80px 7%; display: flex; flex-direction: column; gap: 40px; }
@@ -83,13 +89,16 @@
     .contact-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
     .info-card { display: flex; align-items: center; gap: 18px; margin-bottom: 25px; }
     .info-icon { width: 50px; height: 50px; background: rgba(57, 255, 20, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+    .info-detail h4 { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3px; }
     .info-detail p { font-size: 0.9rem; }
 
     .contact-form { background: var(--card-bg); padding: 30px 20px; border-radius: 15px; border: 1px solid var(--glass-border); }
-    .form-group { margin-bottom: 18px; }
-    input, textarea { width: 100%; background: #000; border: 1px solid var(--glass-border); padding: 15px; color: #fff; border-radius: 8px; outline: none; font-size: 0.9rem; }
+    input, textarea { width: 100%; background: #000; border: 1px solid var(--glass-border); padding: 15px; color: #fff; border-radius: 8px; outline: none; font-size: 0.9rem; margin-bottom: 15px; }
+    input:focus, textarea:focus { border-color: var(--primary); }
 
     footer { border-top: 1px solid var(--glass-border); padding: 40px 7%; text-align: center; }
+    footer p { font-size: 0.8rem; }
+    footer span { color: var(--primary); font-weight: 700; }
 
     @media (min-width: 768px) {
       .hero-btns { flex-direction: row; max-width: none; justify-content: center; }
@@ -100,6 +109,8 @@
     @media (min-width: 992px) {
       .projects-grid { grid-template-columns: repeat(3, 1fr); }
       .about-section { flex-direction: row; align-items: center; padding: 100px 10%; }
+      .about-text { flex: 1; }
+      .about-visual { flex: 1; }
     }
   </style>
 </head>
@@ -158,7 +169,7 @@
     <div class="projects-grid">
       
       <div class="project-card" data-aos="fade-up">
-        <img src="https://i.postimg.cc/mD7XvX4Y/image.jpg" class="card-img">
+        <div class="card-icon-box"><i class="fas fa-tractor"></i></div>
         <div class="card-content">
           <h3>Terra Forte Locações</h3>
           <p>Plataforma robusta para gestão e locação de máquinas pesadas.</p>
@@ -167,7 +178,7 @@
       </div>
 
       <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600" class="card-img">
+        <div class="card-icon-box"><i class="fas fa-pizza-slice"></i></div>
         <div class="card-content">
           <h3>Pizzaria Cariri</h3>
           <p>Cardápio interativo com pedidos em tempo real via WhatsApp.</p>
@@ -176,7 +187,7 @@
       </div>
 
       <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://i.postimg.cc/0jXyvN3S/dra-celine-capa.jpg" class="card-img">
+        <div class="card-icon-box"><i class="fas fa-stethoscope"></i></div>
         <div class="card-content">
           <h3>Dra. Celine Conceito</h3>
           <p>E-commerce premium focado em moda médica e scrubs de luxo.</p>
@@ -185,7 +196,7 @@
       </div>
 
       <div class="project-card" data-aos="fade-up">
-        <div style="height: 180px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 3rem;"><i class="fas fa-utensils"></i></div>
+        <div class="card-icon-box"><i class="fas fa-utensils"></i></div>
         <div class="card-content">
           <h3>Menu Inteligente Full</h3>
           <p>Sistema de esfirras com Admin para ajuste de preços e taxas.</p>
@@ -194,7 +205,7 @@
       </div>
 
       <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-        <div style="height: 180px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 3rem;"><i class="fas fa-user-shield"></i></div>
+        <div class="card-icon-box"><i class="fas fa-user-shield"></i></div>
         <div class="card-content">
           <h3>Painel Adm Real-time</h3>
           <p>Dashboard para controle de pedidos e taxas de entrega dinâmicas.</p>
@@ -203,7 +214,7 @@
       </div>
 
       <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <div style="height: 180px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 3rem;"><i class="fas fa-database"></i></div>
+        <div class="card-icon-box"><i class="fas fa-database"></i></div>
         <div class="card-content">
           <h3>Data Persistence App</h3>
           <p>Aplicação web focada em manter itens no carrinho após refresh.</p>
@@ -246,9 +257,9 @@
       </div>
       <div class="contact-form" data-aos="fade-up">
         <form onsubmit="enviarEmail(); return false;">
-          <input type="text" id="nome" placeholder="Seu Nome" required style="margin-bottom: 15px;">
+          <input type="text" id="nome" placeholder="Seu Nome" required>
           <textarea id="mensagem" rows="4" placeholder="Sua Mensagem" required></textarea>
-          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Enviar Mensagem →</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem →</button>
         </form>
       </div>
     </div>
