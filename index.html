@@ -25,38 +25,37 @@
       background-color: var(--bg);
       color: var(--text-main);
       overflow-x: hidden;
-      line-height: 1.6;
     }
 
-    /* --- BARRA DE PROGRESSO --- */
-    #progress-bar {
-      position: fixed; top: 0; left: 0; height: 3px;
-      background: var(--primary); width: 0%; z-index: 9999;
-      box-shadow: 0 0 10px var(--primary);
+    /* --- AVATAR NO TOPO --- */
+    .profile-header {
+      padding-top: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* --- LUZES DE FUNDO (GLOW) --- */
-    .glow-bg {
-      position: fixed; width: 40vw; height: 40vw;
-      background: radial-gradient(circle, rgba(0, 123, 255, 0.07), transparent 70%);
-      top: -10vw; right: -10vw; z-index: -1; pointer-events: none;
-    }
-    .glow-bg-2 {
-      position: fixed; width: 50vw; height: 50vw;
-      background: radial-gradient(circle, rgba(0, 123, 255, 0.05), transparent 70%);
-      bottom: -15vw; left: -15vw; z-index: -1; pointer-events: none;
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      padding: 5px;
+      background: var(--bg);
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
+      object-fit: cover;
     }
 
     /* --- STATUS PULSAR --- */
     .status-badge {
       background: rgba(0, 123, 255, 0.08);
       border: 1px solid rgba(0, 123, 255, 0.15);
-      padding: 10px 20px; border-radius: 50px;
-      color: var(--primary); font-size: 0.75rem; font-weight: 700;
-      display: inline-flex; align-items: center; gap: 12px; margin-bottom: 30px;
+      padding: 8px 16px; border-radius: 50px;
+      color: var(--primary); font-size: 0.7rem; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 10px; margin: 20px 0;
     }
 
-    .status-dot { width: 10px; height: 10px; background: var(--primary); border-radius: 50%; position: relative; }
+    .status-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; position: relative; }
     .status-dot::after {
       content: ''; position: absolute; width: 100%; height: 100%;
       background: var(--primary); border-radius: 50%;
@@ -64,212 +63,187 @@
     }
     @keyframes pulse-ring { 0% {transform: scale(.5); opacity: 1;} 100% {transform: scale(3); opacity: 0;} }
 
-    /* --- HERO SECTION --- */
+    /* --- HERO --- */
     .hero {
-      min-height: 100vh; display: flex; flex-direction: column;
+      min-height: 80vh; display: flex; flex-direction: column;
       justify-content: center; align-items: center; text-align: center;
-      padding: 100px 24px; position: relative;
+      padding: 20px 24px;
     }
 
     .hero h1 { 
-      font-size: clamp(2.5rem, 12vw, 5.5rem); line-height: 1; font-weight: 800;
-      letter-spacing: -2px; margin-bottom: 25px;
+      font-size: clamp(2.2rem, 10vw, 5rem); line-height: 1.1; font-weight: 800;
+      letter-spacing: -1px; margin-bottom: 20px;
     }
     .hero h1 span {
       background: linear-gradient(to right, #fff, var(--primary));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    .hero p { color: var(--text-muted); max-width: 650px; font-size: 1.2rem; margin-bottom: 50px; }
+    .hero p { color: var(--text-muted); max-width: 600px; font-size: clamp(1rem, 4vw, 1.1rem); margin-bottom: 40px; }
 
-    .hero-btns { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 320px; }
+    .hero-btns { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 300px; }
 
-    /* --- BOTÕES PREMIUM --- */
+    /* --- BOTÕES --- */
     .btn {
-      padding: 18px 32px; border-radius: 14px; text-decoration: none;
-      font-weight: 700; font-size: 1rem; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      text-align: center; border: 1px solid transparent;
+      padding: 16px 28px; border-radius: 12px; text-decoration: none;
+      font-weight: 700; font-size: 0.9rem; transition: 0.4s; text-align: center;
     }
-    .btn-filled { background: var(--primary); color: #fff; box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2); }
-    .btn-filled:hover { transform: scale(1.05); filter: brightness(1.1); }
-    .btn-outline { background: rgba(255,255,255,0.03); color: #fff; border-color: var(--glass-border); }
-    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: var(--primary); }
+    .btn-filled { background: var(--primary); color: #fff; }
+    .btn-outline { background: rgba(255,255,255,0.03); color: #fff; border: 1px solid var(--glass-border); }
+    .btn-outline:hover { border-color: var(--primary); }
 
-    /* --- CARDS DE PROJETOS --- */
-    .projects-grid {
-      display: grid; grid-template-columns: 1fr; gap: 30px;
-      padding: 20px; max-width: 1200px; margin: 0 auto;
-    }
+    /* --- PROJETOS --- */
+    .projects-section { padding: 80px 20px; max-width: 1200px; margin: auto; }
+    .projects-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 40px; }
+
     @media (min-width: 768px) { 
-        .projects-grid { grid-template-columns: repeat(2, 1fr); } 
         .hero-btns { flex-direction: row; max-width: none; justify-content: center; }
+        .projects-grid { grid-template-columns: repeat(2, 1fr); } 
     }
     @media (min-width: 1024px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .project-card {
-      background: var(--card-bg); backdrop-filter: blur(12px);
-      border-radius: 24px; border: 1px solid var(--glass-border);
-      overflow: hidden; transition: 0.5s;
+      background: var(--card-bg); backdrop-filter: blur(10px);
+      border-radius: 20px; border: 1px solid var(--glass-border);
+      overflow: hidden; transition: 0.4s;
     }
-    .project-card:hover { transform: translateY(-12px); border-color: rgba(0, 123, 255, 0.3); }
-
-    .card-img { width: 100%; height: 220px; object-fit: cover; }
-    .card-content { padding: 30px; }
-    .card-content h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 700; }
-    .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; height: 60px; overflow: hidden; }
+    .project-card:hover { border-color: var(--primary); transform: translateY(-8px); }
+    .card-img { width: 100%; height: 200px; object-fit: cover; }
+    .card-content { padding: 25px; }
+    .card-content h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .card-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; }
 
     /* --- CONTATO --- */
+    .contact-section { padding: 80px 20px; max-width: 1100px; margin: auto; }
     .contact-container {
-      background: var(--card-bg); padding: 40px; border-radius: 30px;
-      border: 1px solid var(--glass-border); margin: 60px 20px;
-      display: grid; gap: 50px;
+        background: var(--card-bg); padding: 30px; border-radius: 24px;
+        border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 40px;
     }
-    @media (min-width: 992px) { .contact-container { grid-template-columns: 1fr 1fr; padding: 70px; } }
+    @media (min-width: 992px) { .contact-container { flex-direction: row; padding: 50px; } .contact-container > div { flex: 1; } }
 
-    .whatsapp-card {
-      background: rgba(0, 123, 255, 0.05); border: 1px solid rgba(0, 123, 255, 0.15);
-      padding: 25px; border-radius: 20px; display: flex; justify-content: space-between;
-      align-items: center; text-decoration: none; color: #fff; margin-top: 30px;
+    .whatsapp-btn {
+        background: rgba(0, 123, 255, 0.1); padding: 20px; border-radius: 15px; 
+        text-decoration: none; color: #fff; display: flex; justify-content: space-between; align-items: center;
+        border: 1px solid rgba(0, 123, 255, 0.2);
     }
 
     input, textarea {
-      width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border);
-      padding: 18px; color: #fff; border-radius: 12px; margin-bottom: 20px; outline: none;
+      width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border);
+      padding: 16px; color: #fff; border-radius: 12px; margin-bottom: 15px; outline: none;
     }
-    input:focus { border-color: var(--primary); }
 
-    footer { padding: 60px 20px; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-muted); }
+    footer { text-align: center; padding: 60px 20px; border-top: 1px solid var(--glass-border); color: var(--text-muted); }
   </style>
 </head>
 <body>
 
-  <div id="progress-bar"></div>
-  <div class="glow-bg"></div>
-  <div class="glow-bg-2"></div>
+  <header class="profile-header" data-aos="fade-down">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Luan Carlos" class="avatar">
+    </header>
 
   <section class="hero" data-aos="fade-up">
     <div class="status-badge">
-      <div class="status-dot"></div> Disponível para novos projetos
+        <div class="status-dot"></div> Disponível para novos projetos
     </div>
     <h1>Desenvolvedor<br><span>Full-Stack</span></h1>
-    <p>Criando interfaces modernas e sistemas escaláveis. Transformo sua visão em realidade digital de alta performance.</p>
+    <p>Criando soluções digitais de alto impacto direto de Barbalha-CE.</p>
     
     <div class="hero-btns">
-      <a href="#contato" class="btn btn-filled">Iniciar um Projeto</a>
+      <a href="#contato" class="btn btn-filled">Entre em contato</a>
       <a href="#trabalhos" class="btn btn-outline">Ver Portfólio</a>
-    </div>
-
-    <div style="display: flex; gap: 40px; margin-top: 60px; opacity: 0.7;">
-      <div><h2 style="font-size: 2rem;">6</h2><p style="font-size: 0.7rem; text-transform: uppercase;">Projetos</p></div>
-      <div><h2 style="font-size: 2rem;">2+</h2><p style="font-size: 0.7rem; text-transform: uppercase;">Anos de Exp.</p></div>
     </div>
   </section>
 
-  <section id="trabalhos" style="padding: 100px 0;">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 60px;">Trabalhos <span>Recentes</span></h2>
+  <section id="trabalhos" class="projects-section">
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 40px;">Projetos <span>Destaque</span></h2>
     <div class="projects-grid">
       
       <div class="project-card" data-aos="fade-up">
-        <img src="https://i.postimg.cc/mD7XvX4Y/image.jpg" class="card-img" alt="Terra Forte">
+        <img src="https://i.postimg.cc/mD7XvX4Y/image.jpg" class="card-img">
         <div class="card-content">
           <h3>Terra Forte Locações</h3>
-          <p>Plataforma robusta para locação de máquinas pesadas.</p>
-          <a href="https://terrafortes.netlify.app/" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: none;">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+          <p>Plataforma para locação de máquinas pesadas.</p>
+          <a href="https://terrafortes.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Ver Site →</a>
         </div>
       </div>
 
       <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600" class="card-img" alt="Pizzaria">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600" class="card-img">
         <div class="card-content">
           <h3>Pizzaria Cariri</h3>
-          <p>Interface de menu digital otimizada para pedidos rápidos.</p>
-          <a href="https://pizzariacariri.netlify.app/" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: none;">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+          <p>Cardápio digital moderno e interativo.</p>
+          <a href="https://pizzariacariri.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Ver Site →</a>
         </div>
       </div>
 
       <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600" class="card-img" alt="Terreiro">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600" class="card-img">
         <div class="card-content">
           <h3>Terreiro do Barbosa</h3>
-          <p>Branding digital e cardápio para setor de gastronomia.</p>
-          <a href="https://terreirodobarbosa.netlify.app/" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: none;">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+          <p>Landing page para gastronomia regional.</p>
+          <a href="https://terreirodobarbosa.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Ver Site →</a>
         </div>
       </div>
 
       <div class="project-card" data-aos="fade-up">
-        <img src="https://i.postimg.cc/0jXyvN3S/dra-celine-capa.jpg" class="card-img" alt="Dra Celine">
+        <img src="https://i.postimg.cc/0jXyvN3S/dra-celine-capa.jpg" class="card-img">
         <div class="card-content">
           <h3>Dra. Celine Conceito</h3>
-          <p>E-commerce de luxo com foco em vestuário médico.</p>
-          <a href="https://draceline.com.br/" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: none;">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+          <p>E-commerce premium de moda médica.</p>
+          <a href="https://draceline.com.br/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Ver Site →</a>
         </div>
       </div>
 
       <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=600" class="card-img" alt="TN Black">
+        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=600" class="card-img">
         <div class="card-content">
           <h3>Loja TN Black</h3>
-          <p>E-commerce masculino com integração de pagamentos.</p>
-          <a href="https://tnblack.com.br" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: none;">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+          <p>Loja online de vestuário masculino.</p>
+          <a href="https://tnblack.com.br" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Ver Site →</a>
         </div>
       </div>
 
       <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=600" class="card-img" alt="Hub">
+        <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=600" class="card-img">
         <div class="card-content">
           <h3>Dra. Celine Hub</h3>
-          <p>Landing page estratégica para links e conversão social.</p>
-          <a href="https://draceline.netlify.app/" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: none;">Ver Projeto <i class="fas fa-arrow-right"></i></a>
+          <p>Central de links para redes sociais.</p>
+          <a href="https://draceline.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Ver Site →</a>
         </div>
       </div>
+
     </div>
   </section>
 
-  <section id="contato" style="max-width: 1200px; margin: auto;">
+  <section id="contato" class="contact-section">
     <div class="contact-container" data-aos="zoom-in">
       <div>
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Vamos criar algo<br>extraordinário?</h2>
-        <p style="margin-bottom: 30px;">Barbalha-CE, Centro. Disponível para reuniões presenciais ou remotas.</p>
-        
-        <p style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px;">E-mail profissional</p>
-        <p style="margin-bottom: 25px;">Luancfelix30@gmail.com</p>
-
-        <a href="https://wa.me/5588992791644" class="whatsapp-card" target="_blank">
-          <span><strong>Falar no WhatsApp</strong><br><small>Respondo em poucos minutos</small></span>
-          <i class="fab fa-whatsapp" style="font-size: 2rem; color: #25d366;"></i>
+        <h2>Vamos conversar?</h2>
+        <p style="margin: 15px 0 30px; color: var(--text-muted);">Estou disponível para novos projetos e parcerias.</p>
+        <a href="https://wa.me/5588992791644" class="whatsapp-btn" target="_blank">
+          <span><strong>WhatsApp</strong><br><small>Clique para iniciar conversa</small></span>
+          <i class="fab fa-whatsapp" style="font-size: 1.8rem; color: #25d366;"></i>
         </a>
       </div>
-
       <div>
         <form>
-          <input type="text" placeholder="Qual o seu nome?" required>
-          <input type="email" placeholder="Seu melhor e-mail" required>
-          <textarea rows="5" placeholder="Como posso ajudar seu negócio?" required></textarea>
-          <button type="submit" class="btn btn-filled" style="width: 100%; border: none; cursor: pointer;">Enviar Mensagem</button>
+          <input type="text" placeholder="Seu nome" required>
+          <textarea rows="4" placeholder="Sua mensagem" required></textarea>
+          <button type="submit" class="btn btn-filled" style="width: 100%; border: none; cursor: pointer;">Enviar</button>
         </form>
       </div>
     </div>
   </section>
 
   <footer>
-    <div style="margin-bottom: 30px; font-size: 1.5rem;">
-      <a href="https://github.com/LuanCarlos20" target="_blank" style="color: #fff; margin: 0 15px;"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank" style="color: #fff; margin: 0 15px;"><i class="fab fa-linkedin"></i></a>
+    <div style="margin-bottom: 20px;">
+      <a href="https://github.com/LuanCarlos20" target="_blank" style="color: #fff; margin: 0 15px; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank" style="color: #fff; margin: 0 15px; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
     </div>
-    &copy; 2026 Luan Carlos | Crafted with precision.
+    <p>&copy; 2026 Luan Carlos</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-    
-    // Script da Barra de Progresso
-    window.onscroll = function() {
-      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      let scrolled = (winScroll / height) * 100;
-      document.getElementById("progress-bar").style.width = scrolled + "%";
-    };
-  </script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
 </body>
 </html>
