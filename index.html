@@ -28,7 +28,46 @@
       line-height: 1.5;
     }
 
-    /* --- HERO MOBILE OPTIMIZED --- */
+    /* --- EFEITO PULSAR NO DISPONÍVEL --- */
+    .status-badge {
+      background: rgba(0, 123, 255, 0.1);
+      border: 1px solid rgba(0, 123, 255, 0.2);
+      padding: 8px 18px;
+      border-radius: 30px;
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .status-dot::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: pulse-ring 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.33); opacity: 1; }
+      80%, 100% { transform: scale(2.5); opacity: 0; }
+    }
+
+    /* --- HERO --- */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -39,32 +78,16 @@
       padding: 80px 20px 40px;
     }
 
-    .status-badge {
-      background: rgba(0, 123, 255, 0.1);
-      border: 1px solid rgba(0, 123, 255, 0.2);
-      padding: 6px 15px;
-      border-radius: 30px;
-      color: var(--primary);
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .status-dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 8px var(--primary); }
-
     .hero h1 { 
       font-size: clamp(2.2rem, 12vw, 5rem); 
       line-height: 1.1;
       font-weight: 800;
-      letter-spacing: -1px;
       margin-bottom: 20px;
+      letter-spacing: -1px;
     }
 
     .hero h1 span {
-        background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
+        background: linear-gradient(135deg, #fff 40%, var(--primary) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -74,11 +97,12 @@
       max-width: 600px;
       font-size: clamp(1rem, 4vw, 1.2rem);
       margin-bottom: 40px;
+      font-weight: 300;
     }
 
     .hero-btns {
       display: flex;
-      flex-direction: column; /* Coluna no mobile */
+      flex-direction: column;
       gap: 15px;
       width: 100%;
       max-width: 300px;
@@ -86,64 +110,74 @@
 
     .hero-stats {
       display: grid;
-      grid-template-columns: 1fr 1fr; /* 2 colunas no mobile */
+      grid-template-columns: 1fr 1fr;
       gap: 20px;
       margin-top: 50px;
       padding-top: 30px;
       border-top: 1px solid var(--glass-border);
       width: 100%;
+      max-width: 500px;
     }
 
-    .stat-item h2 { font-size: 2rem; font-weight: 800; }
-    .stat-item p { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
+    .stat-item h2 { font-size: 2.2rem; font-weight: 800; }
+    .stat-item p { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
     /* --- BOTÕES --- */
     .btn {
       padding: 16px 30px;
-      border-radius: 10px;
+      border-radius: 12px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       text-align: center;
-      transition: 0.3s;
+      transition: 0.4s;
     }
 
-    .btn-filled { background: var(--primary); color: #fff; }
+    .btn-filled { background: var(--primary); color: #fff; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); }
+    .btn-filled:hover { transform: translateY(-3px); background: #006ae6; }
+
     .btn-light { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid var(--glass-border); }
+    .btn-light:hover { background: rgba(255, 255, 255, 0.1); }
 
     /* --- PROJETOS --- */
-    .projects-section { padding: 60px 20px; }
+    .projects-section { padding: 80px 20px; max-width: 1200px; margin: auto; }
     .projects-grid { 
         display: grid; 
-        grid-template-columns: 1fr; /* Força 1 coluna em telas menores */
-        gap: 25px; 
+        grid-template-columns: 1fr; 
+        gap: 30px; 
+        margin-top: 40px;
     }
 
     @media (min-width: 768px) {
         .hero-btns { flex-direction: row; max-width: none; justify-content: center; }
-        .hero-stats { display: flex; justify-content: center; gap: 60px; }
-        .projects-grid { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+        .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+        .projects-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     .project-card {
       background: var(--card-bg);
       backdrop-filter: blur(10px);
-      border-radius: 15px;
+      border-radius: 20px;
       border: 1px solid var(--glass-border);
       overflow: hidden;
+      transition: 0.4s ease;
     }
 
+    .project-card:hover { border-color: var(--primary); transform: translateY(-8px); }
     .card-img { width: 100%; height: 200px; object-fit: cover; }
     .card-content { padding: 25px; }
-    .card-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
-    .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+    .card-content h3 { font-size: 1.3rem; margin-bottom: 8px; }
+    .card-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
 
     /* --- CONTATO --- */
-    .contact-section { padding: 60px 20px; }
+    .contact-section { padding: 80px 20px; max-width: 1100px; margin: auto; }
     .contact-container {
         background: var(--card-bg);
         padding: 30px;
-        border-radius: 20px;
+        border-radius: 24px;
         border: 1px solid var(--glass-border);
         display: flex;
         flex-direction: column;
@@ -151,55 +185,61 @@
     }
 
     @media (min-width: 992px) {
-        .contact-container { flex-direction: row; padding: 60px; gap: 80px; }
+        .contact-container { flex-direction: row; padding: 50px; }
         .contact-container > div { flex: 1; }
     }
 
-    .contact-method { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.9rem;}
-    .contact-method i { color: var(--primary); }
+    .contact-method { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; color: var(--text-muted); text-decoration: none; font-size: 0.95rem;}
+    .contact-method i { color: var(--primary); font-size: 1.2rem; }
 
     input, textarea {
-      width: 100%; background: #1a1a1e; border: 1px solid var(--glass-border);
-      padding: 15px; color: #fff; border-radius: 8px; margin-bottom: 15px; outline: none;
+      width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border);
+      padding: 16px; color: #fff; border-radius: 12px; margin-bottom: 15px; outline: none; transition: 0.3s;
     }
+    input:focus, textarea:focus { border-color: var(--primary); }
 
-    .whatsapp-direct {
+    .whatsapp-btn {
         background: rgba(0, 123, 255, 0.1);
-        padding: 20px; border-radius: 12px; text-decoration: none; color: #fff;
+        padding: 20px; border-radius: 15px; text-decoration: none; color: #fff;
         display: flex; justify-content: space-between; align-items: center;
         border: 1px solid rgba(0, 123, 255, 0.2);
+        transition: 0.3s;
     }
+    .whatsapp-btn:hover { background: rgba(0, 123, 255, 0.2); }
 
-    footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--glass-border); color: var(--text-muted); font-size: 0.8rem; }
+    footer { text-align: center; padding: 60px 20px; border-top: 1px solid var(--glass-border); color: var(--text-muted); }
   </style>
 </head>
 <body>
 
-  <section class="hero" data-aos="fade-up">
-    <div class="status-badge"><div class="status-dot"></div> Disponível para Projetos</div>
+  <section class="hero" data-aos="zoom-in">
+    <div class="status-badge">
+        <div class="status-dot"></div> Disponível para novos projetos
+    </div>
     <h1>Desenvolvedor<br><span>Full-Stack</span></h1>
-    <p>Graduando em Sistemas de Informação em Barbalha. Criando soluções digitais modernas e eficientes.</p>
+    <p>Graduando em Sistemas de Informação. Transformo códigos em soluções digitais de alto impacto direto de Barbalha para o mundo.</p>
     
     <div class="hero-btns">
-      <a href="#contato" class="btn btn-filled">Contratar agora</a>
+      <a href="#contato" class="btn btn-filled">Entre em contato</a>
       <a href="#trabalhos" class="btn btn-light">Ver Portfólio</a>
     </div>
 
     <div class="hero-stats">
       <div class="stat-item"><h2>6</h2><p>Projetos</p></div>
-      <div class="stat-item"><h2>2+</h2><p>Anos Exp.</p></div>
+      <div class="stat-item"><h2>2+</h2><p>Anos de Exp.</p></div>
     </div>
   </section>
 
   <section id="trabalhos" class="projects-section">
-    <h2 style="margin-bottom: 40px; text-align: center; font-size: 2rem;">Meus <span>Projetos</span></h2>
+    <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 50px;">Projetos em <span>Destaque</span></h2>
     <div class="projects-grid">
+      
       <div class="project-card" data-aos="fade-up">
         <img src="https://i.postimg.cc/mD7XvX4Y/image.jpg" class="card-img" alt="Terra Forte">
         <div class="card-content">
           <h3>Terra Forte Locações</h3>
-          <p>Plataforma para locação de máquinas pesadas.</p>
-          <a href="https://terrafortes.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Ver site <i class="fas fa-external-link-alt"></i></a>
+          <p>Solução corporativa robusta para locação de máquinas pesadas.</p>
+          <a href="https://terrafortes.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Explorar Site <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -207,35 +247,71 @@
         <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600" class="card-img" alt="Pizzaria">
         <div class="card-content">
           <h3>Pizzaria Cariri</h3>
-          <p>Cardápio digital moderno e interativo.</p>
-          <a href="https://pizzariacariri.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Ver site <i class="fas fa-external-link-alt"></i></a>
+          <p>Menu digital dinâmico e otimizado para o fluxo de pedidos.</p>
+          <a href="https://pizzariacariri.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Ver Menu <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
-      
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600" class="card-img" alt="Terreiro">
+        <div class="card-content">
+          <h3>Terreiro do Barbosa</h3>
+          <p>Experiência digital personalizada para bares e restaurantes.</p>
+          <a href="https://terreirodobarbosa.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Ver Cardápio <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
+
+      <div class="project-card" data-aos="fade-up">
+        <img src="https://i.postimg.cc/0jXyvN3S/dra-celine-capa.jpg" class="card-img" alt="Dra Celine">
+        <div class="card-content">
+          <h3>Dra. Celine Conceito</h3>
+          <p>E-commerce premium focado no mercado de moda médica de luxo.</p>
+          <a href="https://draceline.com.br/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Visitar Loja <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=600" class="card-img" alt="TN Black">
+        <div class="card-content">
+          <h3>Loja TN Black</h3>
+          <p>Integração de checkout e experiência fluida para vestuário.</p>
+          <a href="https://tnblack.com.br" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Acessar Loja <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=600" class="card-img" alt="Hub Link">
+        <div class="card-content">
+          <h3>Dra. Celine Hub</h3>
+          <p>Hub de links estratégicos para conversão direta via redes sociais.</p>
+          <a href="https://draceline.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">Ver Hub <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <section id="contato" class="contact-section">
-    <div class="contact-container">
-      <div data-aos="fade-up">
-        <h2 style="font-size: 2rem; margin-bottom: 15px;">Vamos trabalhar juntos?</h2>
-        <p style="margin-bottom: 30px; color: var(--text-muted);">Entre em contato direto ou pelas redes sociais.</p>
+    <div class="contact-container" data-aos="fade-up">
+      <div>
+        <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Vamos conversar?</h2>
+        <p style="margin-bottom: 35px; color: var(--text-muted);">Estou disponível para freelance e parcerias em projetos de grande escala.</p>
 
-        <a href="mailto:Luancfelix30@gmail.com" class="contact-method"><i class="fas fa-envelope"></i> Luancfelix30@gmail.com</a>
+        <div class="contact-method"><i class="fas fa-envelope"></i> Luancfelix30@gmail.com</div>
         <div class="contact-method"><i class="fas fa-phone"></i> +55 88 99279-1644</div>
         <div class="contact-method"><i class="fas fa-map-marker-alt"></i> Barbalha-CE, Centro</div>
 
-        <a href="https://wa.me/5588992791644" class="whatsapp-direct" target="_blank">
-          <span><strong>WhatsApp</strong><br><small>Clique para conversar</small></span>
-          <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i>
+        <a href="https://wa.me/5588992791644" class="whatsapp-btn" target="_blank">
+          <span><strong>WhatsApp Direto</strong><br><small>Fale comigo agora</small></span>
+          <i class="fab fa-whatsapp" style="font-size: 1.8rem; color: #25d366;"></i>
         </a>
       </div>
 
-      <div data-aos="fade-up">
-        <form action="mailto:Luancfelix30@gmail.com" method="post" enctype="text/plain">
-          <input type="text" placeholder="Nome completo" required>
-          <input type="text" placeholder="Seu contato" required>
-          <textarea rows="4" placeholder="Sua mensagem" required></textarea>
+      <div>
+        <form>
+          <input type="text" placeholder="Seu nome" required>
+          <input type="email" placeholder="Seu melhor e-mail" required>
+          <textarea rows="5" placeholder="Como posso te ajudar?" required></textarea>
           <button type="submit" class="btn btn-filled" style="width: 100%; border: none; cursor: pointer;">Enviar Mensagem</button>
         </form>
       </div>
@@ -243,14 +319,14 @@
   </section>
 
   <footer>
-    <div style="margin-bottom: 20px;">
-        <a href="https://github.com/LuanCarlos20" target="_blank" style="color: #fff; margin: 0 15px; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank" style="color: #fff; margin: 0 15px; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+    <div style="margin-bottom: 25px;">
+        <a href="https://github.com/LuanCarlos20" target="_blank" style="color: #fff; margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank" style="color: #fff; margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
     </div>
-    &copy; 2026 Luan Carlos | Barbalha-CE
+    <p style="font-size: 0.8rem;">&copy; 2026 Luan Carlos | Desenvolvido em Barbalha-CE</p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ duration: 800, once: true });</script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
 </body>
 </html>
