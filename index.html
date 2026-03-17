@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luan Carlos | Dev Full Stack</title>
+  <title>Luan Carlos | Desenvolvedor Full-Stack</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -13,7 +13,7 @@
     :root {
       --primary: #007bff;
       --bg: #050507;
-      --card-bg: rgba(15, 15, 20, 0.7);
+      --card-bg: rgba(15, 15, 20, 0.8);
       --text-main: #ffffff;
       --text-muted: #a0a0b0;
       --glass-border: rgba(255, 255, 255, 0.07);
@@ -27,14 +27,15 @@
       overflow-x: hidden;
     }
 
-    /* --- EFEITO DE FUNDO (ORBS) --- */
-    .bg-glow {
+    /* --- CONTAINER DO EFEITO DE REDE (INTERNET) --- */
+    #particles-js {
       position: fixed;
-      width: 100%; height: 100%;
-      z-index: -1;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(0, 123, 255, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(0, 123, 255, 0.05) 0%, transparent 40%);
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1; /* Fica atrás de tudo */
+      background-color: var(--bg);
     }
 
     /* --- REDES SOCIAIS TOPO --- */
@@ -47,7 +48,7 @@
     }
 
     .social-icon-top:hover {
-      color: var(--primary); transform: translateY(-5px) scale(1.1);
+      color: var(--primary); transform: translateY(-5px);
       text-shadow: 0 0 15px var(--primary);
     }
 
@@ -58,7 +59,6 @@
       padding: 10px 20px; border-radius: 50px;
       color: var(--primary); font-size: 0.75rem; font-weight: 800;
       display: inline-flex; align-items: center; gap: 10px; margin-bottom: 30px;
-      letter-spacing: 1px;
     }
 
     .status-dot { width: 10px; height: 10px; background: var(--primary); border-radius: 50%; position: relative; }
@@ -77,39 +77,32 @@
     }
 
     .hero h1 { 
-      font-size: clamp(2.5rem, 12vw, 6rem); line-height: 1; font-weight: 800;
-      letter-spacing: -3px; margin-bottom: 25px;
+      font-size: clamp(2.5rem, 10vw, 5rem); line-height: 1.1; font-weight: 800;
+      letter-spacing: -2px; margin-bottom: 25px;
     }
     .hero h1 span {
       background: linear-gradient(180deg, #fff 0%, var(--primary) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    .hero p { color: var(--text-muted); max-width: 650px; font-size: 1.2rem; margin-bottom: 50px; font-weight: 300; }
+    .hero p { color: var(--text-muted); max-width: 650px; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.6; }
 
     /* --- BOTÕES --- */
     .hero-btns { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 320px; }
     .btn {
-      padding: 20px 35px; border-radius: 15px; text-decoration: none;
-      font-weight: 800; font-size: 1rem; transition: 0.5s; text-align: center;
+      padding: 18px 30px; border-radius: 15px; text-decoration: none;
+      font-weight: 800; font-size: 0.9rem; transition: 0.5s; text-align: center;
       text-transform: uppercase; letter-spacing: 1px;
     }
-    .btn-filled { 
-      background: var(--primary); color: #fff; 
-      box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
-      border: none;
-    }
-    .btn-filled:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 123, 255, 0.5); }
+    .btn-filled { background: var(--primary); color: #fff; border: none; }
+    .btn-filled:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(0, 123, 255, 0.4); }
     
-    .btn-outline { 
-      background: transparent; color: #fff; 
-      border: 1px solid var(--glass-border);
-    }
-    .btn-outline:hover { border-color: var(--primary); background: rgba(0, 123, 255, 0.05); }
+    .btn-outline { background: rgba(255,255,255,0.03); color: #fff; border: 1px solid var(--glass-border); backdrop-filter: blur(5px); }
+    .btn-outline:hover { border-color: var(--primary); background: rgba(0, 123, 255, 0.1); }
 
-    /* --- PROJETOS (EFEITO TOP) --- */
-    .projects-section { padding: 100px 20px; max-width: 1300px; margin: auto; }
-    .projects-grid { display: grid; grid-template-columns: 1fr; gap: 35px; }
+    /* --- PROJETOS --- */
+    .projects-section { padding: 80px 20px; max-width: 1300px; margin: auto; }
+    .projects-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
 
     @media (min-width: 768px) { 
         .hero-btns { flex-direction: row; max-width: none; justify-content: center; }
@@ -118,53 +111,45 @@
     @media (min-width: 1024px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .project-card {
-      background: var(--card-bg); backdrop-filter: blur(15px);
+      background: var(--card-bg); backdrop-filter: blur(10px);
       border-radius: 25px; border: 1px solid var(--glass-border);
-      overflow: hidden; transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-      position: relative;
+      overflow: hidden; transition: 0.5s ease;
     }
+    .project-card:hover { transform: translateY(-10px); border-color: var(--primary); }
 
-    .project-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      border-color: var(--primary);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    }
-
-    .card-img { width: 100%; height: 230px; object-fit: cover; filter: grayscale(20%); transition: 0.6s; }
-    .project-card:hover .card-img { filter: grayscale(0%); transform: scale(1.1); }
-
-    .card-content { padding: 30px; position: relative; z-index: 2; }
-    .card-content h3 { font-size: 1.5rem; margin-bottom: 12px; font-weight: 700; color: #fff; }
-    .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; height: 50px; overflow: hidden; }
+    .card-img { width: 100%; height: 210px; object-fit: cover; }
+    .card-content { padding: 25px; }
+    .card-content h3 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 700; }
+    .card-content p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; height: 50px; overflow: hidden; }
 
     /* --- CONTATO --- */
     .contact-container {
-        background: linear-gradient(145deg, rgba(20,20,25,0.9), rgba(10,10,15,0.9));
-        padding: 50px 30px; border-radius: 35px;
-        border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 50px;
+        background: var(--card-bg); backdrop-filter: blur(10px);
+        padding: 40px 25px; border-radius: 30px;
+        border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 40px;
         margin: 60px 0;
     }
-    @media (min-width: 992px) { .contact-container { flex-direction: row; padding: 70px; } .contact-container > div { flex: 1; } }
+    @media (min-width: 992px) { .contact-container { flex-direction: row; padding: 60px; } .contact-container > div { flex: 1; } }
 
     .whatsapp-btn {
-        background: rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 20px; 
+        background: rgba(0, 123, 255, 0.1); padding: 20px; border-radius: 18px; 
         text-decoration: none; color: #fff; display: flex; justify-content: space-between; align-items: center;
-        border: 1px solid var(--glass-border); transition: 0.4s;
+        border: 1px solid rgba(0, 123, 255, 0.2);
     }
-    .whatsapp-btn:hover { border-color: #25d366; background: rgba(37, 211, 102, 0.05); }
 
-    footer { 
-      text-align: center; padding: 80px 20px; 
-      font-size: 0.8rem; color: var(--text-muted); 
-      text-transform: uppercase; letter-spacing: 2px;
+    input, textarea {
+      width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border);
+      padding: 18px; color: #fff; border-radius: 12px; margin-bottom: 15px; outline: none;
     }
+
+    footer { text-align: center; padding: 60px 20px; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 2px; }
   </style>
 </head>
 <body>
 
-  <div class="bg-glow"></div>
+  <div id="particles-js"></div>
 
-  <section class="hero" data-aos="zoom-out">
+  <section class="hero" data-aos="fade-up">
     <div class="social-header">
       <a href="https://github.com/LuanCarlos20" target="_blank" class="social-icon-top"><i class="fab fa-github"></i></a>
       <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank" class="social-icon-top"><i class="fab fa-linkedin"></i></a>
@@ -172,28 +157,28 @@
     </div>
 
     <div class="status-badge">
-        <div class="status-dot"></div> Online e disponível
+        <div class="status-dot"></div> Disponível para novos projetos
     </div>
 
-    <h1>Luan Carlos<br><span>Full-Stack</span></h1>
-    <p>Engenharia de software com foco em performance e design futurista. Localizado em Barbalha-CE.</p>
+    <h1>Luan Carlos<br><span>Especialista Full-Stack</span></h1>
+    <p>Especialista em desenvolvimento Full-Stack de aplicações Web. Transformo ideias em produtos digitais de alto impacto.</p>
     
     <div class="hero-btns">
-      <a href="#contato" class="btn btn-filled">Contratar agora</a>
-      <a href="#trabalhos" class="btn btn-outline">Projetos</a>
+      <a href="#contato" class="btn btn-filled">Iniciar um Projeto</a>
+      <a href="#trabalhos" class="btn btn-outline">Ver Portfólio</a>
     </div>
   </section>
 
   <section id="trabalhos" class="projects-section">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 60px; letter-spacing: -1px;">Portfolio <span>Selects</span></h2>
+    <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 50px;">Meus <span>Projetos</span></h2>
     <div class="projects-grid">
       
       <div class="project-card" data-aos="fade-up">
         <img src="https://i.postimg.cc/mD7XvX4Y/image.jpg" class="card-img">
         <div class="card-content">
           <h3>Terra Forte Locações</h3>
-          <p>Sistema corporativo de alta escala para locação pesada.</p>
-          <a href="https://terrafortes.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Acessar Projeto</a>
+          <p>Solução completa para locação de máquinas pesadas.</p>
+          <a href="https://terrafortes.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
         </div>
       </div>
 
@@ -201,8 +186,8 @@
         <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600" class="card-img">
         <div class="card-content">
           <h3>Pizzaria Cariri</h3>
-          <p>Menu interativo com foco em experiência do usuário (UX).</p>
-          <a href="https://pizzariacariri.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Acessar Projeto</a>
+          <p>Cardápio digital interativo para pedidos online.</p>
+          <a href="https://pizzariacariri.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
         </div>
       </div>
 
@@ -210,8 +195,8 @@
         <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600" class="card-img">
         <div class="card-content">
           <h3>Terreiro do Barbosa</h3>
-          <p>Landing page otimizada para conversão gastronômica.</p>
-          <a href="https://terreirodobarbosa.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Acessar Projeto</a>
+          <p>Apresentação digital para restaurante regional.</p>
+          <a href="https://terreirodobarbosa.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
         </div>
       </div>
 
@@ -219,8 +204,8 @@
         <img src="https://i.postimg.cc/0jXyvN3S/dra-celine-capa.jpg" class="card-img">
         <div class="card-content">
           <h3>Dra. Celine Conceito</h3>
-          <p>E-commerce premium integrado com gestão de estoque.</p>
-          <a href="https://draceline.com.br/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Acessar Projeto</a>
+          <p>Loja virtual premium de moda médica.</p>
+          <a href="https://draceline.com.br/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
         </div>
       </div>
 
@@ -228,8 +213,8 @@
         <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=600" class="card-img">
         <div class="card-content">
           <h3>Loja TN Black</h3>
-          <p>Loja virtual completa com foco em moda masculina.</p>
-          <a href="https://tnblack.com.br" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Acessar Projeto</a>
+          <p>E-commerce moderno de vestuário masculino.</p>
+          <a href="https://tnblack.com.br" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
         </div>
       </div>
 
@@ -237,8 +222,8 @@
         <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=600" class="card-img">
         <div class="card-content">
           <h3>Dra. Celine Hub</h3>
-          <p>Central estratégica de links para tráfego pago.</p>
-          <a href="https://draceline.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Acessar Projeto</a>
+          <p>Central de links otimizada para redes sociais.</p>
+          <a href="https://draceline.netlify.app/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700;">VISITAR SITE →</a>
         </div>
       </div>
 
@@ -246,31 +231,52 @@
   </section>
 
   <section id="contato" class="projects-section">
-    <div class="contact-container" data-aos="fade-up">
+    <div class="contact-container" data-aos="zoom-in">
       <div>
-        <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Let's build the future?</h2>
-        <p style="margin-bottom: 40px; color: var(--text-muted);">Entre em contato para orçamentos e consultorias.</p>
-        
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">Vamos criar algo novo?</h2>
+        <p style="margin-bottom: 30px; color: var(--text-muted);">Estou disponível para conversar sobre seu próximo projeto.</p>
         <a href="https://wa.me/5588992791644" class="whatsapp-btn" target="_blank">
-          <span><strong>WhatsApp Business</strong><br><small>Disponibilidade imediata</small></span>
-          <i class="fab fa-whatsapp" style="font-size: 2rem; color: #25d366;"></i>
+          <span><strong>WhatsApp</strong><br><small>Conversar agora</small></span>
+          <i class="fab fa-whatsapp" style="font-size: 1.8rem; color: #25d366;"></i>
         </a>
       </div>
       <div>
-        <form action="mailto:Luancfelix30@gmail.com" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 15px;">
-          <input type="text" placeholder="Nome" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 20px; border-radius: 12px; color: #fff; outline: none;">
-          <textarea rows="4" placeholder="Sua ideia..." style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 20px; border-radius: 12px; color: #fff; outline: none;"></textarea>
-          <button type="submit" class="btn btn-filled" style="cursor: pointer;">Enviar Proposta</button>
+        <form>
+          <input type="text" placeholder="Seu Nome" required>
+          <textarea rows="4" placeholder="Sua ideia ou mensagem..." required></textarea>
+          <button type="submit" class="btn btn-filled" style="width: 100%; border: none; cursor: pointer;">Enviar Agora</button>
         </form>
       </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2026 Luan Carlos — Barbalha, Ceará.
+    &copy; 2026 Luan Carlos | Barbalha - Ceará
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ duration: 1200, once: true });</script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // CONFIGURAÇÃO DO EFEITO DE REDE (INTERNET)
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#007bff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": false },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#007bff", "opacity": 0.4, "width": 1 },
+        "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+        "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
+      },
+      "retina_detect": true
+    });
+  </script>
 </body>
 </html>
