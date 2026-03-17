@@ -10,14 +10,14 @@
   
   <style>
     :root {
-      --primary: #00ff88; /* Verde Neon */
-      --secondary: #064e3b; /* Verde Escuro Profundo */
-      --bg: #020617; /* Preto Azulado */
+      --primary: #00ff88; 
+      --secondary: #064e3b; 
+      --bg: #020617; 
       --card-bg: #0f172a;
       --text-gray: #94a3b8;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
     body {
       background-color: var(--bg);
@@ -25,139 +25,131 @@
       line-height: 1.6;
     }
 
-    /* Estilo Scrollbar Verde */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
-
-    /* Seções */
-    section {
-      padding: 100px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    /* Hero Section */
+    /* Redução drástica do espaço do nome */
     .hero {
-      height: 90vh;
+      height: 50vh; /* Diminuído de 90vh para 50vh */
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: radial-gradient(circle at center, rgba(0, 255, 136, 0.08), transparent);
+      background: radial-gradient(circle at center, rgba(0, 255, 136, 0.05), transparent);
+      padding-top: 20px;
     }
 
     .hero h1 { 
-      font-size: clamp(3rem, 10vw, 5rem); 
+      font-size: clamp(2.5rem, 8vw, 4.5rem); 
       font-weight: 800; 
-      margin-bottom: 10px;
-      color: #fff;
+      margin-bottom: 5px;
     }
 
     .hero span {
       color: var(--primary);
-      text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+      text-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
     }
 
-    .hero p { color: var(--text-gray); font-size: 1.4rem; max-width: 700px; }
+    .hero p { color: var(--text-gray); font-size: 1.1rem; max-width: 600px; opacity: 0.8; }
 
-    /* Slider de Tecnologias */
+    /* Slider posicionado estrategicamente mais acima */
     .tech-slider {
-      background: rgba(0, 255, 136, 0.03);
-      padding: 30px 0;
+      background: rgba(0, 255, 136, 0.02);
+      padding: 20px 0;
       border-top: 1px solid rgba(0, 255, 136, 0.1);
       border-bottom: 1px solid rgba(0, 255, 136, 0.1);
       overflow: hidden;
+      margin-bottom: 20px;
     }
 
     .slide-track {
       display: flex;
-      width: calc(200px * 10);
-      animation: scroll 25s linear infinite;
+      width: calc(180px * 10);
+      animation: scroll 20s linear infinite;
     }
 
     .slide {
-      width: 200px;
+      width: 180px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       color: #fff;
-      font-weight: 600;
-      font-size: 1.1rem;
+      font-weight: 500;
+      font-size: 1rem;
     }
 
-    .slide i { font-size: 1.8rem; color: var(--primary); }
+    .slide i { font-size: 1.5rem; color: var(--primary); }
 
     @keyframes scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-200px * 5)); }
+      100% { transform: translateX(calc(-180px * 5)); }
     }
 
-    /* Projetos */
+    /* Seção de Projetos mais compacta */
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
     .grid-projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: 16px;
+      border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(0, 255, 136, 0.05);
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       border-color: var(--primary);
-      box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
     }
 
-    .card-img { width: 100%; height: 200px; object-fit: cover; }
-    .card-content { padding: 25px; }
-    .card-content h3 { margin-bottom: 10px; }
-    .card-content p { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 20px; }
+    .card-img { width: 100%; height: 180px; object-fit: cover; }
+    .card-content { padding: 20px; }
+    .card-content h3 { margin-bottom: 8px; font-size: 1.2rem; }
+    .card-content p { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 15px; }
 
     .btn {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 8px 16px;
       background: var(--primary);
       color: #020617;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 6px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       transition: 0.3s;
     }
 
-    .btn:hover { transform: scale(1.05); filter: brightness(1.1); }
-
-    /* Footer / Contato */
     footer {
       background: #010409;
-      padding: 80px 20px;
+      padding: 50px 20px;
       text-align: center;
-      border-top: 2px solid var(--secondary);
+      border-top: 1px solid var(--secondary);
     }
 
-    .social-icons { margin: 30px 0; display: flex; justify-content: center; gap: 25px; }
-    .social-icons a { color: #fff; font-size: 2rem; transition: 0.3s; }
-    .social-icons a:hover { color: var(--primary); transform: translateY(-5px); }
+    .social-icons { margin: 20px 0; display: flex; justify-content: center; gap: 20px; }
+    .social-icons a { color: #fff; font-size: 1.8rem; transition: 0.3s; }
+    .social-icons a:hover { color: var(--primary); transform: translateY(-3px); }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.8rem; }
+      .hero { height: 40vh; }
+      .hero h1 { font-size: 2.2rem; }
     }
   </style>
 </head>
 <body>
 
-  <header class="hero" data-aos="fade-in">
+  <header class="hero" data-aos="fade-down">
     <h1>Luan <span>Carlos</span></h1>
-    <p>Developer Web especializado em interfaces modernas e sistemas inteligentes.</p>
+    <p>Software Developer focado em interfaces modernas e alta performance.</p>
   </header>
 
   <div class="tech-slider">
@@ -176,50 +168,36 @@
   </div>
 
   <section id="trabalhos">
-    <h2 data-aos="fade-up" style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">Projetos em Destaque</h2>
-    
+    <h2 data-aos="fade-up" style="text-align: center; margin-bottom: 10px;">Projetos</h2>
     <div class="grid-projects">
       <div class="card" data-aos="fade-up">
-        <img src="https://dcdn-us.mitiendanube.com/stores/006/749/465/themes/common/logo-1119475648-1758577722-7f3865c1c55ac49a923a3a0e344aa8ce1758577722-640-0.webp" class="card-img" alt="TN Black">
+        <img src="https://dcdn-us.mitiendanube.com/stores/006/749/465/themes/common/logo-1119475648-1758577722-7f3865c1c55ac49a923a3a0e344aa8ce1758577722-640-0.webp" class="card-img">
         <div class="card-content">
           <h3>Loja TN Black</h3>
-          <p>Personalização premium e UX estratégica para e-commerce na Nuvemshop.</p>
-          <a href="https://tnblack.com.br" target="_blank" class="btn">Ver projeto</a>
+          <p>E-commerce premium personalizado na plataforma Nuvemshop.</p>
+          <a href="https://tnblack.com.br" target="_blank" class="btn">Acessar</a>
         </div>
       </div>
 
       <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600" class="card-img" alt="Menu Digital">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600" class="card-img">
         <div class="card-content">
-          <h3>Menu Digital Pro</h3>
-          <p>Painel Adm em Python/JS para controle de preços e pedidos em tempo real.</p>
-          <a href="https://github.com/LuanCarlos20" target="_blank" class="btn">Repositório</a>
-        </div>
-      </div>
-
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600" class="card-img" alt="Dash">
-        <div class="card-content">
-          <h3>Persistência de Dados</h3>
-          <p>Otimização de experiência do usuário com armazenamento local e APIs.</p>
-          <a href="https://github.com/LuanCarlos20" target="_blank" class="btn">GitHub</a>
+          <h3>Menu Digital</h3>
+          <p>Painel Adm em Python/JS para gestão de pedidos em tempo real.</p>
+          <a href="https://github.com/LuanCarlos20" target="_blank" class="btn">Código</a>
         </div>
       </div>
     </div>
   </section>
 
-  <footer id="contato">
-    <h2 data-aos="zoom-in">Vamos construir o futuro?</h2>
-    <p style="color: var(--primary); font-weight: bold; margin-top: 10px;">luancfelix30@gmail.com</p>
-    
+  <footer>
     <div class="social-icons">
       <a href="https://github.com/LuanCarlos20" target="_blank"><i class="fab fa-github"></i></a>
       <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://www.instagram.com/lu4ncarlos?igsh=ajV6cWc2N3Y2cHE3&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
-    
-    <p style="font-size: 0.9rem; color: var(--text-gray); margin-top: 40px;">
-      &copy; 2026 Dev Luan Carlos | lu4ncarlos
+    <p style="font-size: 0.8rem; color: var(--text-gray);">
+      &copy; 2026 Dev Luan Carlos | luancfelix30@gmail.com
     </p>
   </footer>
 
