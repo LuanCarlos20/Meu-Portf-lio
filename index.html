@@ -44,7 +44,6 @@
     .status-tag { background: rgba(57, 255, 20, 0.05); border: 1px solid var(--primary); padding: 8px 18px; border-radius: 5px; color: var(--primary); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; display: flex; align-items: center; gap: 8px; }
     .status-tag .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
     
-    /* Quebra de linha ajustada no Mobile */
     .hero h1 { font-size: clamp(2.2rem, 9vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 25px; }
     .hero h1 span { color: var(--primary); display: block; } 
 
@@ -55,7 +54,6 @@
     .btn-primary { background: var(--primary); color: #000; border: none; }
     .btn-secondary { border: 1px solid var(--glass-border); color: #fff; background: rgba(255,255,255,0.02); }
 
-    /* Stats subindo para encostar no portfólio */
     .stats { display: flex; gap: 30px; margin-top: 35px; } 
     .stat-item h2 { font-size: 2.2rem; color: var(--primary); }
     .stat-item p { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
@@ -66,7 +64,7 @@
     .section-label::before { content: ""; width: 35px; height: 1px; background: var(--primary); display: inline-block; }
     
     .projects-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 40px; }
-    .project-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; transition: 0.4s; }
+    .project-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; transition: 0.4s; position: relative; }
     .project-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(57, 255, 20, 0.05); }
     
     .card-icon-box { height: 180px; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 3.5rem; transition: 0.4s; }
@@ -89,16 +87,12 @@
     .contact-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
     .info-card { display: flex; align-items: center; gap: 18px; margin-bottom: 25px; }
     .info-icon { width: 50px; height: 50px; background: rgba(57, 255, 20, 0.05); border: 1px solid var(--glass-border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
-    .info-detail h4 { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3px; }
     .info-detail p { font-size: 0.9rem; }
 
     .contact-form { background: var(--card-bg); padding: 30px 20px; border-radius: 15px; border: 1px solid var(--glass-border); }
     input, textarea { width: 100%; background: #000; border: 1px solid var(--glass-border); padding: 15px; color: #fff; border-radius: 8px; outline: none; font-size: 0.9rem; margin-bottom: 15px; }
-    input:focus, textarea:focus { border-color: var(--primary); }
 
     footer { border-top: 1px solid var(--glass-border); padding: 40px 7%; text-align: center; }
-    footer p { font-size: 0.8rem; }
-    footer span { color: var(--primary); font-weight: 700; }
 
     @media (min-width: 768px) {
       .hero-btns { flex-direction: row; max-width: none; justify-content: center; }
@@ -109,8 +103,6 @@
     @media (min-width: 992px) {
       .projects-grid { grid-template-columns: repeat(3, 1fr); }
       .about-section { flex-direction: row; align-items: center; padding: 100px 10%; }
-      .about-text { flex: 1; }
-      .about-visual { flex: 1; }
     }
   </style>
 </head>
@@ -158,7 +150,7 @@
     </div>
 
     <div class="stats" data-aos="fade-up">
-      <div class="stat-item"><h2>6+</h2><p>Projetos</p></div>
+      <div class="stat-item"><h2>8+</h2><p>Projetos</p></div>
       <div class="stat-item"><h2>2+</h2><p>Anos de Exp.</p></div>
     </div>
   </section>
@@ -169,6 +161,24 @@
     <div class="projects-grid">
       
       <div class="project-card" data-aos="fade-up">
+        <div class="card-icon-box"><i class="fas fa-tshirt"></i></div>
+        <div class="card-content">
+          <h3>TN Black E-commerce</h3>
+          <p>Loja online especializada em moda masculina de alta qualidade.</p>
+          <a href="https://tnblack.com.br/" target="_blank" class="project-link">Visitar Loja →</a>
+        </div>
+      </div>
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon-box"><i class="fas fa-link"></i></div>
+        <div class="card-content">
+          <h3>Bio Links Celine</h3>
+          <p>Menu de links personalizado e otimizado para bio do Instagram.</p>
+          <a href="https://draceline.netlify.app" target="_blank" class="project-link">Ver Links →</a>
+        </div>
+      </div>
+
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
         <div class="card-icon-box"><i class="fas fa-tractor"></i></div>
         <div class="card-content">
           <h3>Terra Forte Locações</h3>
@@ -177,7 +187,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="project-card" data-aos="fade-up">
         <div class="card-icon-box"><i class="fas fa-pizza-slice"></i></div>
         <div class="card-content">
           <h3>Pizzaria Cariri</h3>
@@ -186,7 +196,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
         <div class="card-icon-box"><i class="fas fa-stethoscope"></i></div>
         <div class="card-content">
           <h3>Dra. Celine Conceito</h3>
@@ -195,7 +205,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-aos="fade-up">
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
         <div class="card-icon-box"><i class="fas fa-utensils"></i></div>
         <div class="card-content">
           <h3>Menu Inteligente Full</h3>
@@ -204,7 +214,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="project-card" data-aos="fade-up">
         <div class="card-icon-box"><i class="fas fa-user-shield"></i></div>
         <div class="card-content">
           <h3>Painel Adm Real-time</h3>
@@ -213,7 +223,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
         <div class="card-icon-box"><i class="fas fa-database"></i></div>
         <div class="card-content">
           <h3>Data Persistence App</h3>
