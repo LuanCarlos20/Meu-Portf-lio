@@ -10,10 +10,10 @@
   
   <style>
     :root {
-      --primary: #6366f1;
-      --accent: #ff6600;
-      --bg: #0f172a;
-      --card-bg: #1e293b;
+      --primary: #00ff88; /* Verde Neon */
+      --secondary: #064e3b; /* Verde Escuro Profundo */
+      --bg: #020617; /* Preto Azulado */
+      --card-bg: #0f172a;
       --text-gray: #94a3b8;
     }
 
@@ -25,7 +25,12 @@
       line-height: 1.6;
     }
 
-    /* Seções Padronizadas */
+    /* Estilo Scrollbar Verde */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* Seções */
     section {
       padding: 100px 20px;
       max-width: 1100px;
@@ -40,18 +45,29 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1), transparent);
+      background: radial-gradient(circle at center, rgba(0, 255, 136, 0.08), transparent);
     }
 
-    .hero h1 { font-size: clamp(3rem, 10vw, 5rem); font-weight: 800; margin-bottom: 10px; }
+    .hero h1 { 
+      font-size: clamp(3rem, 10vw, 5rem); 
+      font-weight: 800; 
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .hero span {
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    }
+
     .hero p { color: var(--text-gray); font-size: 1.4rem; max-width: 700px; }
 
-    /* Slider de Tecnologias (Organizado) */
+    /* Slider de Tecnologias */
     .tech-slider {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(0, 255, 136, 0.03);
       padding: 30px 0;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(0, 255, 136, 0.1);
+      border-bottom: 1px solid rgba(0, 255, 136, 0.1);
       overflow: hidden;
     }
 
@@ -67,7 +83,7 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      color: var(--text-gray);
+      color: #fff;
       font-weight: 600;
       font-size: 1.1rem;
     }
@@ -91,13 +107,14 @@
       background: var(--card-bg);
       border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 1px solid rgba(0, 255, 136, 0.05);
       transition: 0.3s;
     }
 
     .card:hover {
       transform: translateY(-8px);
       border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
     }
 
     .card-img { width: 100%; height: 200px; object-fit: cover; }
@@ -109,37 +126,38 @@
       display: inline-block;
       padding: 10px 20px;
       background: var(--primary);
-      color: #fff;
+      color: #020617;
       text-decoration: none;
       border-radius: 8px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.9rem;
       transition: 0.3s;
     }
 
-    .btn:hover { opacity: 0.9; }
+    .btn:hover { transform: scale(1.05); filter: brightness(1.1); }
 
     /* Footer / Contato */
     footer {
-      background: #020617;
-      padding: 60px 20px;
+      background: #010409;
+      padding: 80px 20px;
       text-align: center;
+      border-top: 2px solid var(--secondary);
     }
 
     .social-icons { margin: 30px 0; display: flex; justify-content: center; gap: 25px; }
-    .social-icons a { color: #fff; font-size: 1.8rem; transition: 0.3s; }
-    .social-icons a:hover { color: var(--primary); transform: scale(1.2); }
+    .social-icons a { color: #fff; font-size: 2rem; transition: 0.3s; }
+    .social-icons a:hover { color: var(--primary); transform: translateY(-5px); }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
+      .hero h1 { font-size: 2.8rem; }
     }
   </style>
 </head>
 <body>
 
   <header class="hero" data-aos="fade-in">
-    <h1>Luan Carlos</h1>
-    <p>Desenvolvedor focado em soluções modernas e interfaces de alto impacto.</p>
+    <h1>Luan <span>Carlos</span></h1>
+    <p>Developer Web especializado em interfaces modernas e sistemas inteligentes.</p>
   </header>
 
   <div class="tech-slider">
@@ -158,14 +176,14 @@
   </div>
 
   <section id="trabalhos">
-    <h2 data-aos="fade-up" style="text-align: center; font-size: 2.5rem;">Projetos Selecionados</h2>
+    <h2 data-aos="fade-up" style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">Projetos em Destaque</h2>
     
     <div class="grid-projects">
       <div class="card" data-aos="fade-up">
         <img src="https://dcdn-us.mitiendanube.com/stores/006/749/465/themes/common/logo-1119475648-1758577722-7f3865c1c55ac49a923a3a0e344aa8ce1758577722-640-0.webp" class="card-img" alt="TN Black">
         <div class="card-content">
           <h3>Loja TN Black</h3>
-          <p>E-commerce especializado com personalização avançada na plataforma Nuvemshop.</p>
+          <p>Personalização premium e UX estratégica para e-commerce na Nuvemshop.</p>
           <a href="https://tnblack.com.br" target="_blank" class="btn">Ver projeto</a>
         </div>
       </div>
@@ -174,44 +192,40 @@
         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600" class="card-img" alt="Menu Digital">
         <div class="card-content">
           <h3>Menu Digital Pro</h3>
-          <p>Solução completa para restaurantes com painel administrativo e preços em tempo real.</p>
-          <a href="#" class="btn">Em breve</a>
+          <p>Painel Adm em Python/JS para controle de preços e pedidos em tempo real.</p>
+          <a href="https://github.com/LuanCarlos20" target="_blank" class="btn">Repositório</a>
         </div>
       </div>
 
       <div class="card" data-aos="fade-up" data-aos-delay="200">
         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600" class="card-img" alt="Dash">
         <div class="card-content">
-          <h3>Dash Persistence</h3>
-          <p>Dashboard focado em persistência de dados para melhorar a experiência do usuário.</p>
-          <a href="#" class="btn">GitHub</a>
+          <h3>Persistência de Dados</h3>
+          <p>Otimização de experiência do usuário com armazenamento local e APIs.</p>
+          <a href="https://github.com/LuanCarlos20" target="_blank" class="btn">GitHub</a>
         </div>
       </div>
     </div>
   </section>
 
   <footer id="contato">
-    <h2 data-aos="zoom-in">Vamos criar algo novo?</h2>
-    <p style="color: var(--text-gray);">luancfelix30@gmail.com</p>
+    <h2 data-aos="zoom-in">Vamos construir o futuro?</h2>
+    <p style="color: var(--primary); font-weight: bold; margin-top: 10px;">luancfelix30@gmail.com</p>
     
     <div class="social-icons">
-      <a href="https://github.com/lu4ncarlos" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/luan-carlos-508ba3345/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://instagram.com/lu4ncarlos" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/LuanCarlos20" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/luan-carlos-508ba3345" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/lu4ncarlos?igsh=ajV6cWc2N3Y2cHE3&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
     
-    <p style="font-size: 0.8rem; color: #475569; margin-top: 20px;">
+    <p style="font-size: 0.9rem; color: var(--text-gray); margin-top: 40px;">
       &copy; 2026 Dev Luan Carlos | lu4ncarlos
     </p>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 100
-    });
+    AOS.init({ duration: 800, once: true });
   </script>
 </body>
 </html>
